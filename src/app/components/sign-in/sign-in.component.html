@@ -1,0 +1,62 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-4">
+        <img width="550px"
+          src="https://ik.imagekit.io/lvh0tltbeph/SofkaU/logo-sofkau_1Fn3uH-1S.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645658493330"
+          class="img-fluid">
+        <h3>Gestor de Notas</h3>
+      </div>
+
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="card">
+          <form>
+            <div class="d-flex flex-row align-items-center justify-content-center">
+
+              <br>
+            </div>
+            <div class="form-outline mb-6">
+              <br>
+              <p> <strong>Correo Electrónico</strong> </p>
+              <input type="text" placeholder="Username" #userName required class="form-control form-control-lg"
+                placeholder="Correo" />
+              <label class="form-label" for="form3Example3"></label>
+            </div>
+            <div class="form-outline mb-3">
+              <p><strong>Contraseña</strong></p>
+              <input type="password" placeholder="Password" #userPassword required class="form-control form-control-lg"
+                placeholder="Enter password" />
+              <label class="form-label" for="form3Example4"></label>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" value="Iniciar Sesión"
+                (click)="authService.SignIn(userName.value, userPassword.value)">Iniciar Sesión</button>
+              <br>
+              <div class="text-center">
+            
+                <!-- Calling GoogleAuth Api from AuthService -->
+                <div class="formGroup">
+                  <br>
+                  <button
+                    type="button"
+                    class="btnGoogle"
+                    (click)="authService.GoogleAuth()"
+                  >
+                    <i class="fab fa-google-plus-g"></i>
+                    Inicie Sesion con Google
+                  </button>
+                </div>
+             
+                <br>
+                <span routerLink="/forgot-password"> <strong>¿Has olvidado tu contraseña?</strong> </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

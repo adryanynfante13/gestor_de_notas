@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <h3><strong>Crear Usuario</strong></h3>
+    <form class="formControl ">
+      <div class="mb-2 col-6  ">
+        <label for="disabledTextInput" class="form-label">Nombre completo</label>
+        <input type="datos" class="formControl" placeholder="Nombre completo" required />
+      </div>
+      <div class="mb-2 col-sm-6">
+        <input type="dni" class="formControl" placeholder="Documento de identidad" required />
+      </div>
+
+      <div class="mb-2 col-sm-6">
+        <input type="rol" class="formControl" placeholder="rol" required />
+      </div>
+
+      <div class="mb-2 col-sm-6">
+        <input type="email" class="formControl" placeholder="Email Address" #userEmail required />
+      </div>
+
+      <div class="mb-2 col-sm-6">
+        <input type="password" class="formControl" placeholder="Password" #userPwd required />
+      </div>
+
+      <div class="text-center">
+        <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
+        <button type="button" class="btn btn-primary" value="Iniciar Sesión"
+          (click)="authService.SignUp(userEmail.value, userPwd.value)">Guardar Usuario</button>
+      </div>
+    </form>
+  </div>
+</div>
