@@ -110,7 +110,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
+  const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -122,7 +122,7 @@ export class AuthService {
   }
   // sesión con gogole
   GoogleAuth() {
-    return this.SetUserData(new auth.GoogleAuthProvider()).then((res: any) => {
+    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         this.router.navigate(['dashboard']);
       }
