@@ -22,6 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
 // service
 import { AuthService } from './shared/services/auth.service';
 import { HeaderComponent } from './components/header/header.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { ModulesComponent } from './components/modules/modules.component';
+
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { HeaderComponent } from './components/header/header.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     HeaderComponent,
+    CoursesComponent,
+    ModulesComponent,
   ],
   imports: [
     BrowserModule,
