@@ -75,7 +75,8 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        window.alert('Hemos Enviado un correo a tu email para restablecer tu contraseña');
+        this.router.navigate(['sign-in']);
       })
       .catch((error) => {
         window.alert(error);
@@ -121,7 +122,7 @@ export class AuthService {
   }
   // sesión con gogole
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+    return this.SetUserData(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         this.router.navigate(['dashboard']);
       }
