@@ -1,12 +1,11 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
       <h3>Gracias por tu registro</h3>
 
       <div class="formGroup" *ngIf="authService.userData as user">
         <p class="text-center">
-          HEmos enviado un correo de verificación <strong>{{ user.email }}</strong
-          >.
+          HEmos enviado un correo de verificación <strong>{{ user.email }}</strong>.
         </p>
         <p class="text-center">
           Por favor verifica tu correo y haz click en el link de verificación...
@@ -15,17 +14,18 @@
       </div>
 
       <!-- authService Api -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn btnPrimary"
-          (click)="authService.SendVerificationMail()"
-        >
+      <div class="text-center">
+        <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
           <i class="fas fa-redo-alt"></i>
           Reenviar verificación de email
         </button>
-      </div>
-    </div>
 
+      </div>
+      <br>
+      <div class="text-center">
+        <br>
+      <span routerLink="/create-user"> <strong>Volver a creación de usuario</strong> </span>
+    </div>
+    </div>
   </div>
-</div>
+</section>

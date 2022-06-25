@@ -1,7 +1,10 @@
+//modelo de datos para enviar a mongo
 export interface UserI {
-    uid: string;
-    email: string;
-    displayName: string;
-    emailVerified: boolean;
-  }
+  id:  string;
+  fullName: string;
+  dni: string;
+  email: string;
+  role: string;
+}
+
   
