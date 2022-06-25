@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h3><strong>Crear Usuario</strong></h3>
+  <div class="mb-2">
+    <label for="input1" class="form-label"><strong>Nombre Completo</strong></label>
+    <input type="text" class="form-control"  placeholder="Nombre completo" aria-describedby="passwordHelpBlock" required >
+  </div>
+  <div class="mb-2">
+    <label for="input2" class="form-label"><strong>Número de Documento</strong></label>
+    <input type="text" class="form-control" placeholder="Documento de identidad" aria-describedby="passwordHelpBlock" required >
+  </div>
+  <div class="mb-2">
+    <label for="input3" class="form-label"><strong>Rol</strong></label>
+    <select class="form-select" aria-label="Default select example">
+        <option value="3">Estudiante</option>
+        <option value="1">SuperAdmin</option>
+        <option value="2">Admin</option>       
+      </select>  
+</div>
+  <div class="mb-2">
+    <label for="input4" class="form-label"><strong>Correo Electrónico</strong></label>
+    <input type="email" class="form-control" placeholder="xxx@gmail.com" aria-describedby="passwordHelpBlock"  #userEmail required>
+  </div>
+  <div class="mb-2">
+    <label for="input4" class="form-label"><strong>Contraseña</strong></label>
+    <input type="password" class="form-control" placeholder="Número de documento del usuario" aria-describedby="passwordHelpBlock"  #userPwd required>
+  </div>
+  <div class="text-center">
+    <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
+    <button type="button" class="btn btn-primary" value="Iniciar Sesión"
+      (click)="authService.SignUp(userEmail.value, userPwd.value)">Guardar Usuario</button>
+  </div>
+</div>

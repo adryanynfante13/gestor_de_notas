@@ -1,21 +1,12 @@
-/* Style the navbar */
-.navbar {
 
-    background-color: rgb(0, 0, 0);
-  }
-  
-  /* Navbar links */
-  .navbar a {
-    float: left;
-    display: block;
-    color: #b6b6b6;
-    text-align: center;
-    text-decoration: none;
-    list-style-type: none;
-    margin: 4px;
-  }
+.form-control {
+    padding: 0.375rem 0.75rem;
+}
+.form-label{
+    font-size: 15px;
+}
 
-  button {
+button,a {
     padding: 10px 25px;
     border: unset;
     border-radius: 15px;
@@ -24,7 +15,7 @@
     background: #e8e8e8;
     position: relative;
     font-weight: 1000;
-    font-size: 12px;
+    font-size: 13px;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(54, 13, 121, 0.27);
     box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
     transition: all 250ms;
@@ -38,7 +29,7 @@
     left: 0;
     height: 100%;
     width: 0;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: #491cb3;
     z-index: -1;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(25, 80, 197, 0.27);
@@ -53,3 +44,4 @@
   button:hover::before {
     width: 100%;
   }
+  

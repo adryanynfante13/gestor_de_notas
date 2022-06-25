@@ -7,6 +7,51 @@
     display: inline-block;
   }
 
+.card-header{
+    border-color: rgb(81, 17, 141);
+    background-color: rgb(241, 221, 252);
+  }
+  
+  
+a {
+    padding: 12px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 15px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(54, 13, 121, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+  }
+  
+a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #491cb3;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(25, 80, 197, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(22, 61, 187, 0.27);
+    transition: all 250ms
+  }
+  
+a:hover {
+    color: #e8e8e8;
+  }
+  
+a:hover::before {
+    width: 100%;
+  }
+  
 button{
     padding: 15px 25px;
     border: unset;

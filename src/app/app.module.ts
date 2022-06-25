@@ -12,7 +12,6 @@ import { environment } from '../environments/environment';
 // components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
@@ -23,6 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
 import { HeaderComponent } from './components/header/header.component';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { ModulesComponent } from './components/modules/modules.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
 
 
 @NgModule({
@@ -30,11 +32,13 @@ import { ProgramsComponent } from './components/programs/programs.component';
     AppComponent,
     DashboardComponent,
     SignInComponent,
-    SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
     HeaderComponent,
     ProgramsComponent,
+    CoursesComponent,
+    ModulesComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
