@@ -25,6 +25,7 @@ import { ProgramsComponent } from './components/programs/programs.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { ProgramComponent } from './components/program/program.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     ProgramsComponent,
     CoursesComponent,
     ModulesComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ProgramComponent
   ],
   imports: [
     BrowserModule,

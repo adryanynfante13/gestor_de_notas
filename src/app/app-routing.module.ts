@@ -11,6 +11,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { ProgramComponent } from './components/program/program.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'programs', component: ProgramsComponent },
+  { path: 'program', component: ProgramComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'modules', component:ModulesComponent },
 ];
