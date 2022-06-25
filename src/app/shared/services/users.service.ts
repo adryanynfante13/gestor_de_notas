@@ -11,13 +11,15 @@ export class UsersService {
     throw new Error('Method not implemented.');
   }
 
-  private url: string = '';
+  private url: string = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { 
 
   }
   saveUser(user: UserI): Observable<any> {
-    let direction = this.url + 'user/';
-    return this.http.post<any>(direction, user);
+    let direction = this.url + 'user';
+    return this.http.post<any>(direction, user, {
+      responseType: 'text' as 'json',
+    });
   }
 }

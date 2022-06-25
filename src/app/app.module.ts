@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 // components
@@ -28,6 +29,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ProgramComponent } from './components/program/program.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ import { ProgramComponent } from './components/program/program.component';
     CoursesComponent,
     ModulesComponent,
     CreateUserComponent,
-    ProgramComponent
+    ProgramComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +52,9 @@ import { ProgramComponent } from './components/program/program.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],
 })
 

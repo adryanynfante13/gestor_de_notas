@@ -29,6 +29,7 @@
   <div class="text-center">
     <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
     <button type="button" class="btn btn-primary" value="Iniciar Sesión"
-      (click)="authService.SignUp(userEmail.value, userPwd.value)">Guardar Usuario</button>
+      (click)="authService.SignUp(userEmail.value, userPwd.value)"
+      (click)="saveUser(user)">Guardar Usuario</button>
   </div>
 </div>
