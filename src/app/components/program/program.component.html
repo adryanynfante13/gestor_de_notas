@@ -12,15 +12,15 @@
   </div>
   <div class="mb-2">
     <label for="input3" class="form-label"><strong>Duración</strong></label>
-    <input type="number" class="form-control" placeholder="Escriba el número de días hábiles que requiere el programa" aria-describedby="passwordHelpBlock" required >
+    <input type="number" #duration class="form-control" placeholder="Escriba el número de días hábiles que requiere el programa" aria-describedby="passwordHelpBlock" required >
   </div>
   <div class="mb-2">
-    <label for="input4" class="form-label"><strong>Fecha Inicio</strong></label>
-    <input type="date" class="form-control" required>
+    <label for="input4" #initialDate class="form-label"><strong>Fecha Inicio</strong></label>
+    <input type="date" #date  class="form-control" required>
   </div>
   <div class="mb-2">
     <label for="input5" class="form-label"><strong>Fecha Fin</strong></label>
-    <input type="text" class="form-control" aria-describedby="passwordHelpBlock" value="dd/mm/aaaa" required readonly>
+    <input type="text" class="form-control" aria-describedby="passwordHelpBlock" value="" required readonly>
   </div>
   <div class="text-center">
     <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
