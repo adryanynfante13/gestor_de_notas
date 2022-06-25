@@ -1,29 +1,25 @@
-<ng-template #content let-modal>
-  <div class="modal-body">
-    <div class="container">
-      <div class="card text-center">
-        <div class="card-header fs-4 font1">
-          <b>Agregar Modulo</b>
-        </div>
-        <div class="card-body p-4">
-          <div class="form-floating">
-            <label for="floatingTextarea">Nombre de módulo</label>
-            <textarea class="form-control m-2" id="modulo" style="height: 150px"></textarea>
-            <label for="floatingTextarea">Descripcion de módulo</label>
-            <textarea class="form-control m-2" id="modulo" style="height: 150px"></textarea>
-            <label for="floatingTextarea">Porcentaje</label>
-            <textarea class="form-control m-2" id="modulo" style="height: 150px"></textarea>
-          </div>
-
-          <button type="button" label="Enviar respuesta" class="btn btn-outline-primary">
-          </button>
-        </div>
+<app-header></app-header>
+.<div class="modal-body">
+  <div class="container">
+    <div class="card text-center">
+      <div class="card-header fs-4 font1">
+        <b>Agregar Modulo</b>
       </div>
+      <br>
+      <div class="mb-3">
+        <label> <strong> Nombre de módulo</strong></label>
+        <input class="form-control" id="nombre" style="height: 30px" width="100px">
+      </div>
+      <div class="mb-3">
+        <label><strong>Descripcion de módulo</strong> </label>
+        <input class="form-control m-2" id="descripcion" style="height: 30px">
+      </div>
+      <div class="mb-3">
+        <label> <strong>Porcentaje</strong></label>
+        <input class="form-control m-2" id="porcentaje" style="height: 30px">
+      </div>
+      <div class="text-center">
+      <button type="button" class="btn btn-primary">Agregar módulo</button>
     </div>
-
   </div>
-
-  <div class="modal-footer">
-    <button type="button" label="Cerrar" class="btn btn-outline-primary" (click)="modal.close('Close click')"></button>
-  </div>
-</ng-template>
+</div>

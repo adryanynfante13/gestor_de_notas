@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   {path: 'courses', component: CoursesComponent},
-  {path: 'module', component:ModulesComponent},
+  {path: 'modules', component:ModulesComponent},
 ];
 
 @NgModule({
