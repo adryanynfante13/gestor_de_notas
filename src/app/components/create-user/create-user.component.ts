@@ -17,7 +17,8 @@ export class CreateUserComponent implements OnInit {
   formCreate: FormGroup = new FormGroup({});
   
   user: UserI = {
-    id: '',
+    id: this.authService.userData.uid == undefined
+    ? '': this.authService.userData.uid,
     fullName: '',
     dni: '',
     email: '',
@@ -31,7 +32,6 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(): void {
     this.formCreate = new FormGroup(
       {
-        id: new FormControl ('', [Validators.required]),
         fullName: new FormControl ('', [Validators.required]),
         dni: new FormControl ('', [Validators.required]),
         email: new FormControl ('', [Validators.required, Validators.email]),
@@ -42,13 +42,14 @@ export class CreateUserComponent implements OnInit {
 
   saveUser(){
     const user: any = {
-      id: "2345678",
+      id: this.user.id,
       fullName: this.formCreate.value.fullName,
       dni: this.formCreate.value.dni,
       email: this.formCreate.value.email,
       role : this.formCreate.value.role,
     }
-    this.userService.saveUser(user).subscribe(response => {console.log(response)});
-    
+    setTimeout(() => {
+      this.userService.saveUser(user).subscribe(response => {console.log(response)});
+    }, 8000);
   }
 }
