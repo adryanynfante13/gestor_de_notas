@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import{UserI} from './user-i';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,6 @@ export class UsersService {
   }
   saveUser(user: UserI): Observable<any> {
     let direction = this.url + 'user';
-    return this.http.post<any>(direction, user, {
-      responseType: 'text' as 'json',
-    });
+    return this.http.post<any>(direction, user);
   }
 }

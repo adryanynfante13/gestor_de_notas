@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserI } from 'src/app/shared/services/user-i';
 import { UsersService } from 'src/app/shared/services/users.service';
@@ -13,15 +14,14 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class CreateUserComponent implements OnInit {
 
+  formCreate: FormGroup = new FormGroup({});
+  
   user: UserI = {
-    id:
-      this.authService.userData.uid == undefined
-        ? ''
-        : this.authService.userData.uid,
+    id: '',
     fullName: '',
     dni: '',
     email: '',
-    role: ''
+    role: '',
   };
 
   constructor(public authService: AuthService, 
@@ -29,18 +29,26 @@ export class CreateUserComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit(): void {
+    this.formCreate = new FormGroup(
+      {
+        id: new FormControl ('', [Validators.required]),
+        fullName: new FormControl ('', [Validators.required]),
+        dni: new FormControl ('', [Validators.required]),
+        email: new FormControl ('', [Validators.required, Validators.email]),
+        role: new FormControl ('', [Validators.required]),
+      }
+    )
   }
 
-  saveUser(user: UserI): void {
-     this.userService.saveUser(user).subscribe({
-      next: (v) => {       
-        if (v) {
-          console.log(v)
-           };
-           setTimeout(() => {
-           window.location.reload();
-         }, 2000);}})
-        
+  saveUser(){
+    const user: any = {
+      id: "2345678",
+      fullName: this.formCreate.value.fullName,
+      dni: this.formCreate.value.dni,
+      email: this.formCreate.value.email,
+      role : this.formCreate.value.role,
+    }
+    this.userService.saveUser(user).subscribe(response => {console.log(response)});
+    
   }
-
 }

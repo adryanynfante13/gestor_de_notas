@@ -27,6 +27,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ProgramComponent } from './components/program/program.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -52,7 +53,8 @@ import { ProgramComponent } from './components/program/program.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],
