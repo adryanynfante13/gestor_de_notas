@@ -25,12 +25,12 @@
   </div>
   <div class="mb-2">
     <label for="password" class="form-label"><strong>Contraseña</strong></label>
-    <input type="password" formControlName="password" class="form-control" placeholder="Número de documento del usuario" aria-describedby="passwordHelpBlock"  #userPwd required>
+    <input type="password" class="form-control" placeholder="Número de documento del usuario" aria-describedby="passwordHelpBlock"  #userPwd required>
   </div>
   <div class="text-center">
     <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
     <button type="button" class="btn btn-primary" value="Iniciar Sesión"
-      (click)="authService.SignUp(userEmail.value, userPwd.value); saveUser();"
+      (click)="x(userEmail.value, userPwd.value)"
     >Guardar Usuario</button>
   </div>
   </form>

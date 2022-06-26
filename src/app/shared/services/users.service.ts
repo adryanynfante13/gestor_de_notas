@@ -20,6 +20,6 @@ export class UsersService {
   }
   saveUser(user: UserI): Observable<any> {
     let direction = this.url + 'user';
-    return this.http.post<any>(direction, user);
+    return this.http.post(direction, user, { responseType: 'text'});
   }
 }

@@ -49,16 +49,18 @@ export class AuthService {
   }
 
   // creación de usuarios
-  SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  async SignUp(email: string, password: string) {
+    try {
+      return await this.afAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then( (result) => {
+          this.SendVerificationMail();
+          this.SetUserData(result.user); 
+          return result;
+        })
+    } catch (error) {
+        return error;
+      };
   }
 
   // envio de email de verificación
