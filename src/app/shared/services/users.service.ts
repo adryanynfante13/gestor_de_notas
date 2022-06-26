@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import{UserI} from './user-i';
+import{UserI} from '../modals/user-i';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
@@ -22,4 +22,5 @@ export class UsersService {
     let direction = this.url + 'user';
     return this.http.post(direction, user, { responseType: 'text'});
   }
+  
 }

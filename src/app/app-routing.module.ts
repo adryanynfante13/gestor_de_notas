@@ -7,6 +7,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { StudentComponent } from './components/student/student.component';
 
 
 import { AuthGuard } from './shared/guard/auth.guard';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'program', component: ProgramComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'modules', component:ModulesComponent },
+  { path: 'student', component:StudentComponent },
 ];
 
 @NgModule({

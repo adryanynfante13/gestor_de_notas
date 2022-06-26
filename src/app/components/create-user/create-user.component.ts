@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserI } from 'src/app/shared/services/user-i';
+import { UserI } from 'src/app/shared/modals/user-i';
 import { UserFirebase } from 'src/app/shared/services/userFirebase';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AuthService } from '../../shared/services/auth.service';

@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../services/user';
+import { User } from '../modals/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -49,17 +49,18 @@ export class AuthService {
   }
 
   // creación de usuarios
-  SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-        console.log(result);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  async SignUp(email: string, password: string) {
+    try {
+      return await this.afAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then( (result) => {
+          this.SendVerificationMail();
+          this.SetUserData(result.user); 
+          return result;
+        })
+    } catch (error) {
+        return error;
+      };
   }
 
   // envio de email de verificación
