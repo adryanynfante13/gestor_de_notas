@@ -2,29 +2,31 @@
 <div class="container">
   <br>
   <h3><strong>Crear Programa</strong></h3>
+  <form [formGroup]="formProgram">
   <div class="mb-2">
-    <label for="input1" class="form-label"><strong>Nombre del Programa</strong></label>
-    <input type="text" class="form-control"  placeholder="Nombre del Programa" aria-describedby="passwordHelpBlock" required >
+    <label for="name" class="form-label"><strong>Nombre del Programa</strong></label>
+    <input type="text" formControlName="name" class="form-control"  placeholder="Nombre del Programa" aria-describedby="passwordHelpBlock" required >
   </div>
   <div class="mb-2">
-    <label for="input2" class="form-label"><strong>Descripción</strong></label>
-    <input type="text" class="form-control" placeholder="Escriba una breve descripción del programa" aria-describedby="passwordHelpBlock" required >
+    <label for="description" class="form-label"><strong>Descripción</strong></label>
+    <input type="text" formControlName="description" class="form-control" placeholder="Escriba una breve descripción del programa" aria-describedby="passwordHelpBlock" required >
   </div>
   <div class="mb-2">
-    <label for="input3" class="form-label"><strong>Duración</strong></label>
-    <input type="number" #duration class="form-control" placeholder="Escriba el número de días hábiles que requiere el programa" aria-describedby="passwordHelpBlock" required >
+    <label for="duration" class="form-label"><strong>Duración</strong></label>
+    <input type="number"  formControlName="duration" #duration class="form-control" placeholder="Escriba el número de días hábiles que requiere el programa" aria-describedby="passwordHelpBlock" required >
   </div>
   <div class="mb-2">
-    <label for="input4" #initialDate class="form-label"><strong>Fecha Inicio</strong></label>
-    <input type="date" #date  class="form-control" required>
+    <label for="startDate" #initialDate class="form-label"><strong>Fecha Inicio</strong></label>
+    <input type="date"  formControlName="startDate" #date  class="form-control" required>
   </div>
   <div class="mb-2">
-    <label for="input5" class="form-label"><strong>Fecha Fin</strong></label>
-    <input type="text" class="form-control" aria-describedby="passwordHelpBlock" value="" required readonly>
+    <label for="finishDate" class="form-label"><strong>Fecha Fin</strong></label>
+    <input type="text" formControlName="finishDate" class="form-control" aria-describedby="passwordHelpBlock" value="" required readonly>
   </div>
   <div class="text-center">
     <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
-    <button type="button" class="btn btn-primary" value="Guardar Programa"
+    <button (click)="saveProgram()" type="button" class="btn btn-primary" value="Guardar Programa"
       >Guardar Programa</button>
   </div>
+  </form>
 </div>
