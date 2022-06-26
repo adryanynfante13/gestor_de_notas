@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserI } from 'src/app/shared/services/user-i';
+import { UserFirebase } from 'src/app/shared/services/userFirebase';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -15,15 +16,6 @@ import { AuthService } from '../../shared/services/auth.service';
 export class CreateUserComponent implements OnInit {
 
   formCreate: FormGroup = new FormGroup({});
-  
-  user: UserI = {
-    id: this.authService.userData.uid == undefined
-    ? '': this.authService.userData.uid,
-    fullName: '',
-    dni: '',
-    email: '',
-    role: '',
-  };
 
   constructor(public authService: AuthService, 
     private userService: UsersService, 
@@ -40,16 +32,21 @@ export class CreateUserComponent implements OnInit {
     )
   }
 
-  saveUser(){
-    const user: any = {
-      id: this.user.id,
-      fullName: this.formCreate.value.fullName,
-      dni: this.formCreate.value.dni,
-      email: this.formCreate.value.email,
-      role : this.formCreate.value.role,
-    }
-    setTimeout(() => {
-      this.userService.saveUser(user).subscribe(response => {console.log(response)});
-    }, 8000);
+  x = (userEmail: string, userPwd: string) => {
+    this.authService.SignUp(userEmail, userPwd)
+    .then(res => {
+      this.saveUser(res as UserFirebase)
+    })
+  }
+
+  saveUser(res: UserFirebase){
+    const user: UserI = {
+        id: res.user.uid,
+        fullName: this.formCreate.value.fullName,
+        dni: this.formCreate.value.dni,
+        email: this.formCreate.value.email,
+        role : this.formCreate.value.role,
+      }
+      this.userService.saveUser(user).subscribe();
   }
 }
