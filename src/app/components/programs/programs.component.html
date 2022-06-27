@@ -1,18 +1,19 @@
 <app-header></app-header>
-<section class="programs" *ngFor="let program of programs">
+<br>
+<div class="text-center">
+  <button routerLink="/program" type="button">Añadir programa</button>
+</div>
+<br>
+<section class="programs" *ngFor="let fullProgram of fullPrograms">
   <div class="row">
     <div class="col-md-4 col-sm-6">
       <div class="card" style="width: 25rem;">
         <div class="card-header">
-          <h5 class="card-title">{{program.name}}</h5>
-          <p class="card-text">{{program.description}}</p>
+          <h5 class="card-title">{{fullProgram.program.name}}</h5>
+          <p class="card-text">{{fullProgram.program.description}}</p>
           <a routerLink="/detailProgram" class="btn btn-outline-primary">Ver Detalles</a>
         </div>
       </div>
     </div>
   </div>
 </section>
-<br>
-<div class="text-center">
-  <button routerLink="/program" type="button">Añadir programa</button>
-</div>

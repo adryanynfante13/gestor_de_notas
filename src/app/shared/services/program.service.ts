@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ProgramI } from '../modals/program-i';
 import { CourseI } from '../modals/course-i';
 import { ModuleI } from '../modals/module-i';
+import { FullProgramI } from '../modals/fullProgram-i';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,11 @@ export class ProgramService {
 
   constructor(private http: HttpClient) { }
 
-  saveProgram(program: ProgramI): Observable<any> {
+  saveProgram(fullProgram: FullProgramI): Observable<any> {
     let direction = this.url + 'program';
-    return this.http.post(direction, program, { responseType: 'text'});
-    
+    return this.http.post<any>(direction, fullProgram.program, { 
+      responseType: 'text' as 'json',
+    });
   }
 
   saveCourse(course: CourseI): Observable<any> {
@@ -31,9 +33,9 @@ export class ProgramService {
     return this.http.post(direction, module, { responseType: 'text'});
   }
 
-  getProgramsAll():Observable<ProgramI[]>{
+  getProgramsAll():Observable<FullProgramI[]>{
     let direction = this.url + 'program';
-    return this.http.get<ProgramI[]>(direction);
+    return this.http.get<FullProgramI[]>(direction);
   }
   getProgram(id : string):Observable<ProgramI[]>{
     let direction = this.url + 'program/' + id;

@@ -7,5 +7,5 @@ export interface ProgramI {
     duration: number,
     startDate: Date,
     finishDate: string,
-    //courses: [CourseI]
+    courses: [CourseI | null]
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
 import { ProgramI } from 'src/app/shared/modals/program-i';
+import { FullProgramI } from '../../shared/modals/fullProgram-i';
 
 @Component({
   selector: 'app-program',
@@ -28,17 +29,31 @@ export class ProgramComponent implements OnInit {
     }
   )
 }
-saveProgram(){
+
+saveFullProgram() {
+  const fullProgram: FullProgramI = {
+    program: {
+      name: this.program().name,
+      description: this.program().description,
+      duration: this.program().duration,
+      startDate: this.program().startDate,
+      finishDate: this.program().finishDate,
+      courses: [null]
+    },
+    students: []
+  }
+  this.programService.saveProgram(fullProgram).subscribe();
+}
+program(){
   const program: ProgramI = {
-    
     name: this.formProgram.value.name,
     description: this.formProgram.value.description,
     duration: this.formProgram.value.duration,
     startDate: this.formProgram.value.startDate,
     finishDate: this.date(),
+    courses: [null]
     }
-  this.programService.saveProgram(program).subscribe();
-  console.log(program);
+  return program
 }
 
 date() {
@@ -55,7 +70,6 @@ date() {
     if (mounth<10) 
     finishMount = '0' + mounth;
     let finishDate = date.getFullYear() + '-' + finishMount + '-' + date.getDate();
-  console.log(finishDate)
   return finishDate
   }
 
