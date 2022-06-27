@@ -6,6 +6,6 @@ export interface ProgramI {
     description: string,
     duration: number,
     startDate: Date,
-    finishDate: Date,
+    finishDate: string,
     //courses: [CourseI]
 }

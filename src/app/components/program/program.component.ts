@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
@@ -35,11 +35,28 @@ saveProgram(){
     description: this.formProgram.value.description,
     duration: this.formProgram.value.duration,
     startDate: this.formProgram.value.startDate,
-    finishDate: this.formProgram.value.finishDate,
+    finishDate: this.date(),
     }
-   
-    console.log(program);
+  this.programService.saveProgram(program).subscribe();
+  console.log(program);
 }
 
+date() {
+  let counter: number = 0;
+  const date = new Date (this.formProgram.value.startDate);
+  const duration = this.formProgram.value.duration;
+  while (counter<duration) {
+    date.setTime(date.getTime()+24*60*60*1000); // añadimos 1 día
+    if (date.getDay() != 6 && date.getDay() != 0)
+  counter++;  
+  }
+  let mounth = date.getMonth()+1;
+  let finishMount = '';
+    if (mounth<10) 
+    finishMount = '0' + mounth;
+    let finishDate = date.getFullYear() + '-' + finishMount + '-' + date.getDate();
+  console.log(finishDate)
+  return finishDate
+  }
 
 }
