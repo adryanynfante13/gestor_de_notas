@@ -30,7 +30,7 @@ export class ProgramComponent implements OnInit {
 }
 saveProgram(){
   const program: ProgramI = {
-    id: '',
+    
     name: this.formProgram.value.name,
     description: this.formProgram.value.description,
     duration: this.formProgram.value.duration,
