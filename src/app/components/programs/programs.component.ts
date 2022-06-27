@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProgramI } from 'src/app/shared/modals/program-i';
+import { ProgramService } from 'src/app/shared/services/program.service';
 
 @Component({
   selector: 'app-programs',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramsComponent implements OnInit {
 
-  constructor() { }
+  programs: ProgramI[] | undefined;
+
+  constructor(private programService: ProgramService) { }
 
   ngOnInit(): void {
+    this.getProgramsAll();
+   this.programService.getProgramsAll().subscribe((data) => {this.programs = data});
   }
+
+  getProgramsAll(): void {(this.getProgramsAll)};
 
 }

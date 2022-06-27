@@ -8,6 +8,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { StudentComponent } from './components/student/student.component';
+import { DetailProgramComponent } from './components/detail-program/detail-program.component';
 
 
 import { AuthGuard } from './shared/guard/auth.guard';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'modules', component:ModulesComponent },
   { path: 'student', component:StudentComponent },
+  {path: 'detailProgram', component: DetailProgramComponent},
 ];
 
 @NgModule({

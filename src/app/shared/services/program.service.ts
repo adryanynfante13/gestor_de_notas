@@ -31,5 +31,14 @@ export class ProgramService {
     return this.http.post(direction, module, { responseType: 'text'});
   }
 
+  getProgramsAll():Observable<ProgramI[]>{
+    let direction = this.url + 'program';
+    return this.http.get<ProgramI[]>(direction);
+  }
+  getProgram(id : string):Observable<ProgramI[]>{
+    let direction = this.url + 'program/' + id;
+    return this.http.get<ProgramI[]>(direction);
+  }
+
 
 }

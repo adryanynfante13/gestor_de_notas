@@ -29,6 +29,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ProgramComponent } from './components/program/program.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentComponent } from './components/student/student.component';
+import { DetailProgramComponent } from './components/detail-program/detail-program.component';
 
 
 
@@ -46,6 +47,7 @@ import { StudentComponent } from './components/student/student.component';
     CreateUserComponent,
     ProgramComponent,
     StudentComponent,
+    DetailProgramComponent,
   ],
   imports: [
     BrowserModule,

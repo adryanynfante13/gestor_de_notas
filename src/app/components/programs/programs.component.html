@@ -1,28 +1,18 @@
 <app-header></app-header>
-
-<section class="programs">
+<section class="programs" *ngFor="let program of programs">
   <div class="row">
-  <div class="col-md-6 col-sm-6">
-  <div class="card" style="width: 25rem;">
-    <div class="card-header">
-      <h5 class="card-title">Desarrollo Web Ciclo 2 2022</h5>
-      <p class="card-text">Este programa está diseñado con la intención de formar desarrolladores web.</p>
-      <a routerLink="/" class="btn btn-outline-primary">Ver Detalles</a>
+    <div class="col-md-4 col-sm-6">
+      <div class="card" style="width: 25rem;">
+        <div class="card-header">
+          <h5 class="card-title">{{program.name}}</h5>
+          <p class="card-text">{{program.description}}</p>
+          <a routerLink="/detailProgram" class="btn btn-outline-primary">Ver Detalles</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="col-md-6 col-sm-6">
-  <div class="card" style="width: 25rem;">
-    <div class="card-header">
-      <h5 class="card-title">QA Ciclo 2 2022</h5>
-      <p class="card-text">Este programa está diseñado con la intención de formar analistas de calidad.</p>
-      <a routerLink="/" class="btn btn-outline-primary">Ver Detalles</a>
-    </div>
-  </div>
-</div>
-</div>
 </section>
-
+<br>
 <div class="text-center">
-    <button routerLink="/program" type="button">Añadir programa</button>
+  <button routerLink="/program" type="button">Añadir programa</button>
 </div>
