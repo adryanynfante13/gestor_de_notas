@@ -50,9 +50,9 @@ saveFullProgram() {
   }
   this.programService.saveProgram(fullProgram).subscribe();
   console.log(fullProgram)
-  /*setTimeout(() => {
+  setTimeout(() => {
     window.location.reload();
-  }, 2000);*/
+  }, 2000);
 }
 program(){
   const program: ProgramI = {
@@ -65,6 +65,7 @@ program(){
     courses: []
     }
   return program
+
 }
 
 date() {

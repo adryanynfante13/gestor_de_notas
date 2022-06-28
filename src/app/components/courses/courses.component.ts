@@ -76,6 +76,9 @@ export class CoursesComponent implements OnInit {
       }
       this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
       console.log(course);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
   }
   
   crearFormularioModules() {

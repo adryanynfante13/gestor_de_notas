@@ -3,28 +3,57 @@
 <div class="container">
   <div class="row">
     <div class="shadow p-4 mb-3 bg-body rounded">
-        <div class="text-center">
-      <h2>Programa: {{fullProgram?.program?.name}}</h2>
-    </div>
+      <div class="text-center">
+        <h2>Programa: {{fullProgram?.program?.name}}</h2>
+      </div>
       <h5>Descripción: {{fullProgram?.program?.description}}</h5>
       <h5>Duración: {{fullProgram?.program?.duration}} días habiles</h5>
       <h5>Fecha de inicio: {{fullProgram?.program?.startDate}}</h5>
       <h5>Fecha fin: {{fullProgram?.program?.finishDate}}</h5>
+      <div class="text-end">
+        <button [routerLink]="['/course', fullProgram?.program?.id]">Añadir Cursos</button>
+        <button>Añadir Estudiantes</button>
+      </div>
     </div>
+    <div class="text-center">
+      <h5><strong>Cursos del Programa</strong> </h5>
     </div>
-  </div>
-<section class="programs" *ngFor="let course of courses">
-  <div class="row">
-    <div class="col-md-4 col-sm-6">
-      <div class="card" style="width: 25rem;">
-        <div class="card-header">
-          <h5 class="card-title">{{course.name}}</h5>
-        </div>
+    <br>
+    <div class="card" style="width: 25rem;" *ngFor="let course of courses">
+      <div class="shadow p-4 mb-3 bg-body rounded">
+        <h5>{{course.name}}</h5>
+        <h5>Promedio {{course.average}}</h5>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h5><strong>Estudiantes del Programa</strong> </h5>
+      <br>
+      <div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Documento de Identidad</th>
+              <th scope="col">Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">b6df4bgf6dhn5454</th>
+              <td>Lorena Castro</td>
+              <td>10006565</td>
+              <td>lorena@gmail.com</td>
+            </tr>
+            <tr>
+              <th scope="col">eds6fg4dr9t4hj6dg</th>
+              <td>Adryan Ynfante</td>
+              <td>646567</td>
+              <td>adryan@gmail.com</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-</section>
-<div class="text-center">
-<button [routerLink]="['/course', fullProgram?.program?.id]">Añadir Cursos</button>
-<button>Añadir Estudiantes</button>
-</div>
