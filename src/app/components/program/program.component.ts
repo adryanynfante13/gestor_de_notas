@@ -44,7 +44,7 @@ saveFullProgram() {
       duration: this.program().duration,
       startDate: this.program().startDate,
       finishDate: this.program().finishDate,
-      courses: []
+      courses: [] 
     },
     students: []
   }

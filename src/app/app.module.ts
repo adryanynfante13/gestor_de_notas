@@ -10,6 +10,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
+
 // components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -59,6 +60,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
   ],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],
