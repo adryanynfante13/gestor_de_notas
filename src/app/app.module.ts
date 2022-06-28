@@ -58,7 +58,7 @@ import { DetailProgramComponent } from './components/detail-program/detail-progr
     AngularFireDatabaseModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],

@@ -14,7 +14,7 @@ import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 })
 export class CoursesComponent implements OnInit {
   fullProgram!: FullProgramI;
-  courses: [CourseI | null] | undefined
+  courses: CourseI[] | undefined
   formCourse: FormGroup = new FormGroup({});
 
   @Input() item: any;
@@ -54,7 +54,7 @@ export class CoursesComponent implements OnInit {
         score: 0
       }]
       }
-      this.programService.saveCourse(course, this.fullProgram.id as string).subscribe();
+      this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
       console.log(course);
   }
 }
