@@ -1,5 +1,7 @@
+import { ModuleI } from './module-i';
+
 export interface CourseI {
     name: string,
-    description: string,
-    //modules: []
+    average: number,
+    modules: [ModuleI | null]
 }

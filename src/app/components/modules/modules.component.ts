@@ -30,8 +30,8 @@ export class ModulesComponent implements OnInit {
   saveCourse(){
     const module: ModuleI = {
       name: this.formModules.value.name,
-      description: this.formModules.value.description,
       percentage: this.formModules.value.percentage,
+      score: this.formModules.value.score,
       }
       this.programService.saveModules(module).subscribe();
      

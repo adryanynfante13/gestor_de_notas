@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'programs', component: ProgramsComponent },
   { path: 'program', component: ProgramComponent },
-  { path: 'courses', component: CoursesComponent },
+  { path: 'course/:id', component: CoursesComponent },
   { path: 'modules', component:ModulesComponent },
   { path: 'student', component:StudentComponent },
   { path: 'program/:id', component: DetailProgramComponent },

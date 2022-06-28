@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseI } from 'src/app/shared/modals/course-i';
 import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
+import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 
 
 @Component({
@@ -12,25 +13,44 @@ import { ProgramService } from 'src/app/shared/services/program.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+  fullProgram!: FullProgramI;
+  courses: [CourseI | null] | undefined
   formCourse: FormGroup = new FormGroup({});
 
+  @Input() item: any;
   constructor(authService: AuthService,
     private programService: ProgramService,  
-    private route: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getProgram(`${id}`);
     this.formCourse = new FormGroup(
       {
         name: new FormControl ('', [Validators.required]),
-        description: new FormControl ('', [Validators.required]),
+        average: new FormControl ('', [Validators.required]),
 
       }
     )
   }
+
+  getProgram(id: string): void {
+    this.programService.getProgram(id).subscribe((data) => {
+      this.fullProgram = data;
+      this.courses = data.program.courses;
+    })
+  }
+
   saveCourse(){
     const course: CourseI = {
       name: this.formCourse.value.name,
-      description: this.formCourse.value.description,
+      average: 0,
+      modules: [{
+        name: "modulo1",
+        percentage: 20,
+        score: 0
+      }]
       }
       this.programService.saveCourse(course).subscribe();
       console.log(course);

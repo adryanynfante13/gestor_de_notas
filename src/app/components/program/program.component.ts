@@ -33,7 +33,7 @@ export class ProgramComponent implements OnInit {
 
 saveFullProgram() {
   const fullProgram: FullProgramI = {
-    id: this.item.id,
+    id: undefined,
     program: {
       name: this.program().name,
       description: this.program().description,
@@ -45,6 +45,10 @@ saveFullProgram() {
     students: []
   }
   this.programService.saveProgram(fullProgram).subscribe();
+  console.log(fullProgram)
+  setTimeout(() => {
+    window.location.reload();
+  }, 2000);
 }
 program(){
   const program: ProgramI = {
