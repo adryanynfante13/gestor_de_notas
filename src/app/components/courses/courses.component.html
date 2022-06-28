@@ -42,7 +42,7 @@
           </div>
           <br>
           <div class="text-center">
-            <button class="boton" (click)="saveCourse()" type="button">Guardar</button>
+            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram.program.id]" type="button" class="btn btn-outline-primary btn-sm">Guardar</button>
           </div>
         </div>
       </form>

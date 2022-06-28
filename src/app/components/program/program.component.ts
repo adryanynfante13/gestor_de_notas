@@ -5,6 +5,8 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
 import { ProgramI } from 'src/app/shared/modals/program-i';
 import { FullProgramI } from '../../shared/modals/fullProgram-i';
+import * as uuid from "uuid";
+
 
 @Component({
   selector: 'app-program',
@@ -13,6 +15,8 @@ import { FullProgramI } from '../../shared/modals/fullProgram-i';
 })
 export class ProgramComponent implements OnInit {
   formProgram: FormGroup = new FormGroup({});
+
+  myId = uuid.v4();
 
   @Input() item: any;
   constructor(authService: AuthService, 
@@ -33,31 +37,32 @@ export class ProgramComponent implements OnInit {
 
 saveFullProgram() {
   const fullProgram: FullProgramI = {
-    id: undefined,
     program: {
+      id: this.program().id,
       name: this.program().name,
       description: this.program().description,
       duration: this.program().duration,
       startDate: this.program().startDate,
       finishDate: this.program().finishDate,
-      courses: [null]
+      courses: []
     },
     students: []
   }
   this.programService.saveProgram(fullProgram).subscribe();
   console.log(fullProgram)
-  setTimeout(() => {
+  /*setTimeout(() => {
     window.location.reload();
-  }, 2000);
+  }, 2000);*/
 }
 program(){
   const program: ProgramI = {
+    id: this.myId,
     name: this.formProgram.value.name,
     description: this.formProgram.value.description,
     duration: this.formProgram.value.duration,
     startDate: this.formProgram.value.startDate,
     finishDate: this.date(),
-    courses: [null]
+    courses: []
     }
   return program
 }

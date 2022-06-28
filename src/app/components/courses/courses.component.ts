@@ -15,8 +15,7 @@ import { ModuleI } from 'src/app/shared/modals/module-i';
 })
 export class CoursesComponent implements OnInit {
   fullProgram!: FullProgramI;
-  courses: [CourseI | null] | undefined
-  Modules: [ModuleI ] | undefined
+  courses: CourseI[] | undefined
   formCourse: FormGroup = new FormGroup({});
   modulesForm: FormGroup = new FormGroup({});
   
@@ -32,6 +31,7 @@ export class CoursesComponent implements OnInit {
     private fb: FormBuilder) { }
     
 
+    id: string | undefined
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getProgram(`${id}`);
@@ -61,6 +61,7 @@ export class CoursesComponent implements OnInit {
       this.fullProgram = data;
       this.courses = data.program.courses;
     })
+    console.log(this.fullProgram)
   }
 
   saveCourse(){
@@ -73,7 +74,7 @@ export class CoursesComponent implements OnInit {
         score: 0
       }]
       }
-      this.programService.saveCourse(course).subscribe();
+      this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
       console.log(course);
   }
   

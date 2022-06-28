@@ -11,9 +11,20 @@
       <h5>Fecha de inicio: {{fullProgram?.program?.startDate}}</h5>
       <h5>Fecha fin: {{fullProgram?.program?.finishDate}}</h5>
     </div>
+    </div>
   </div>
-</div>
+<section class="programs" *ngFor="let course of courses">
+  <div class="row">
+    <div class="col-md-4 col-sm-6">
+      <div class="card" style="width: 25rem;">
+        <div class="card-header">
+          <h5 class="card-title">{{course.name}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="text-center">
-<button [routerLink]="['/course', fullProgram?.id]">Añadir Cursos</button>
+<button [routerLink]="['/course', fullProgram?.program?.id]">Añadir Cursos</button>
 <button>Añadir Estudiantes</button>
 </div>
