@@ -29,7 +29,7 @@ export class ProgramComponent implements OnInit {
       description: new FormControl ('', [Validators.required]),
       duration: new FormControl ('', [Validators.required]),
       startDate: new FormControl ('', [Validators.required]),
-      finishDate: new FormControl ('', [Validators.required]),
+      finishDate: new FormControl ('', []),
 
     }
   )

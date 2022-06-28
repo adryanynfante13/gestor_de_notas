@@ -2,26 +2,34 @@
 <div class="container">
   <br>
   <h3><strong>Crear Programa</strong></h3>
-  <form [formGroup]="formProgram">
+  <form [formGroup]="formProgram" novalidate (ngSubmit)="saveFullProgram()" #f="ngForm" >
   <div class="mb-2">
     <label for="name" class="form-label"><strong>Nombre del Programa</strong></label>
-    <input type="text" formControlName="name" class="form-control"  placeholder="Nombre del Programa" aria-describedby="passwordHelpBlock" required >
+    <input type="text"  formControlName="name" class="form-control"  
+    placeholder="Nombre del Programa" aria-describedby="passwordHelpBlock"  required >
   </div>
   <div class="mb-2">
     <label for="description" class="form-label"><strong>Descripción</strong></label>
-    <input type="text" formControlName="description" class="form-control" placeholder="Escriba una breve descripción del programa" aria-describedby="passwordHelpBlock" required >
+    <input type="text"  formControlName="description" class="form-control" 
+    placeholder="Escriba una breve descripción del programa" 
+    aria-describedby="passwordHelpBlock"  required >
   </div>
   <div class="mb-2">
     <label for="duration" class="form-label"><strong>Duración</strong></label>
-    <input type="number"  formControlName="duration" #duration class="form-control" placeholder="Escriba el número de días hábiles que requiere el programa" aria-describedby="passwordHelpBlock" required >
+    <input type="number"  min="1" 
+    formControlName="duration" #duration 
+    class="form-control" 
+    placeholder="Escriba el número de días hábiles que requiere el programa" 
+    aria-describedby="passwordHelpBlock"  required >
   </div>
   <div class="mb-2">
     <label for="startDate" #initialDate class="form-label"><strong>Fecha Inicio</strong></label>
-    <input type="date"  formControlName="startDate" #date  class="form-control" required>
+    <input type="date"   formControlName="startDate" #date  class="form-control"  required>
   </div>
   <div class="text-center">
     <!-- falta colocar funcion para enviar datos a mongo  y terminar el modelo-->
-    <button (click)="saveFullProgram()" routerLink="/programs" type="button" class="btn btn-primary" value="Guardar Programa"
+    <button (click)="saveFullProgram()" routerLink="/programs"   type="submit"  [disabled]="f.invalid"
+    class="btn btn-primary" value="Guardar Programa"
       >Guardar Programa</button>
   </div>
   </form>
