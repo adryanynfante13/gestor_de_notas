@@ -24,8 +24,8 @@ export class ProgramService {
     });
   }
 
-  saveCourse(course: CourseI): Observable<any> {
-    let direction = this.url + 'course/:id';
+  saveCourse(course: CourseI, id: string): Observable<any> {
+    let direction = this.url + 'course/' + id;
     return this.http.put(direction, course, { responseType: 'text'});
   }
 

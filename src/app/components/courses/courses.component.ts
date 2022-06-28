@@ -23,6 +23,7 @@ export class CoursesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) { }
 
+    id: string | undefined
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getProgram(`${id}`);
@@ -40,6 +41,7 @@ export class CoursesComponent implements OnInit {
       this.fullProgram = data;
       this.courses = data.program.courses;
     })
+    console.log(this.fullProgram)
   }
 
   saveCourse(){
@@ -52,7 +54,7 @@ export class CoursesComponent implements OnInit {
         score: 0
       }]
       }
-      this.programService.saveCourse(course).subscribe();
+      this.programService.saveCourse(course, this.fullProgram.id as string).subscribe();
       console.log(course);
   }
 }
