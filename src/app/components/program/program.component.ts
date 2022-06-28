@@ -14,6 +14,7 @@ import { FullProgramI } from '../../shared/modals/fullProgram-i';
 export class ProgramComponent implements OnInit {
   formProgram: FormGroup = new FormGroup({});
 
+  @Input() item: any;
   constructor(authService: AuthService, 
     private programService: ProgramService,  
     private route: Router) { }
@@ -32,6 +33,7 @@ export class ProgramComponent implements OnInit {
 
 saveFullProgram() {
   const fullProgram: FullProgramI = {
+    id: this.item.id,
     program: {
       name: this.program().name,
       description: this.program().description,

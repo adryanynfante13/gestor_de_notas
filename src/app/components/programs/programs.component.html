@@ -11,7 +11,7 @@
         <div class="card-header">
           <h5 class="card-title">{{fullProgram.program.name}}</h5>
           <p class="card-text">{{fullProgram.program.description}}</p>
-          <a routerLink="/detailProgram" class="btn btn-outline-primary">Ver Detalles</a>
+          <a [routerLink]="['/program', fullProgram.id]" class="btn btn-outline-primary">Ver Detalles</a>
         </div>
       </div>
     </div>

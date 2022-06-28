@@ -24,10 +24,11 @@ export class ProgramService {
     });
   }
 
-  saveCourse(course: CourseI): Observable<any> {
-    let direction = this.url + 'course';
-    return this.http.post(direction, course, { responseType: 'text'});
+  saveCourse(course: CourseI, id: string): Observable<any> {
+    let direction = this.url + 'course/' + id;
+    return this.http.put(direction, course, { responseType: 'text'});
   }
+
   saveModules(module: ModuleI): Observable<any> {
     let direction = this.url + 'module';
     return this.http.post(direction, module, { responseType: 'text'});
@@ -37,9 +38,9 @@ export class ProgramService {
     let direction = this.url + 'program';
     return this.http.get<FullProgramI[]>(direction);
   }
-  getProgram(id : string):Observable<ProgramI[]>{
+  getProgram(id : string):Observable<FullProgramI>{
     let direction = this.url + 'program/' + id;
-    return this.http.get<ProgramI[]>(direction);
+    return this.http.get<FullProgramI>(direction);
   }
 
 

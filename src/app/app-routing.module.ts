@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'modules', component:ModulesComponent },
   { path: 'student', component:StudentComponent },
-  {path: 'detailProgram', component: DetailProgramComponent},
+  { path: 'program/:id', component: DetailProgramComponent },
 ];
 
 @NgModule({

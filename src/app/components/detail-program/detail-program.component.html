@@ -1,10 +1,14 @@
 <app-header></app-header>
+<br>
 <div class="container">
     <div class="row">
-<p>{{program}}</p>
-
-        <h3>Programa {{program?.name}}</h3>
-        <h4>{{program?.description}}</h4>
-        <h5>{{program?.finishDate}}</h5>
+        <h3>Programa {{fullProgram?.program?.name}}</h3>
+        <h4>{{fullProgram?.program?.description}}</h4>
+        <h4>{{fullProgram?.program?.duration}} días habiles</h4>
+        <h4>Fecha de inicio: {{fullProgram?.program?.startDate}}</h4>
+        <h4>Fecha de terminación: {{fullProgram?.program?.finishDate}}</h4>
     </div>
 </div>
+
+<button routerLink="/courses">Añadir Cursos</button>
+<button>Añadir Estudiantes</button>

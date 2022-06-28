@@ -1,7 +1,6 @@
 import { CourseI } from "./course-i";
 
 export interface ProgramI {
-  
     name: string,
     description: string,
     duration: number,
