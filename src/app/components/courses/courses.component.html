@@ -16,37 +16,39 @@
           <label style="display:none" for="average" class="form-label"><strong>Descripción del curso</strong> </label>
           <input style="display:none" type="text" formControlName="average" class="form-control"
             aria-describedby="passwordHelpBlock" required>
-          <br>
-          <div class="text-start">
-            <form [formGroup]="modulesForm">
-              <div>
-                <div *ngFor="let modulos of modules.controls; let i = index;">
-                  <div>
-                    <label for="name"><strong> Nombre de Modulo</strong></label><br />
-                    <input formControlName="name" type="text" class="form-control" required />
-                  </div>
-                  <div>
-                    <label for="percentage"><strong> Porcentaje</strong> </label><br />
-                    <input type="number" formControlName="percentage" class="form-control" min="1" required />
-                  </div>
-                  <div>
-                    <label style="display:none ;" for="score">Nota:</label><br />
-                    <input type="text" formControlName="score" class="form-control" required style="display:none ;"
-                      value=0 />
-                  </div>
-                  <button class="boton-danger" (click)="deleteModule(i)">Borrar</button>
+        </div>
+        <section class="modules" *ngFor="let module of moduleList; let i = index">
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <div class="card" style="width: 25rem;">
+                <div class="card-header">
+                  <button class="btn btn-danger" (click)="deleteModule(i)">x</button>
+                  <h5 class="card-title">Nombre del Modulo: {{module.name}}</h5>
+                  <p class="card-text">Porcentaje: {{module.percentage}}%</p>
                 </div>
               </div>
-              <button class="boton" (click)="addModules()"> Añadir Modulo + </button>
-            </form>
+            </div>
           </div>
+        </section>
+          <br>
+        <div class="mb-3">
+          <label for="nameModule" class="form-label"><strong> Nombre de Modulo</strong></label><br />
+          <input type="text" formControlName="nameModule"  class="form-control"  aria-describedby="passwordHelpBlock" required />
+        </div>
+        <div>
+          <label for="percentage"><strong> Porcentaje</strong> </label><br />
+          <input type="number" formControlName="percentage" class="form-control"  min="1" required />
+        </div>
+        <div>
+          <label style="display:none ;" for="score">Nota:</label><br />
+          <input type="number" formControlName="score" class="form-control" required style="display:none ;"/>
+        </div>
+        <button class="boton" type="button" (click)="saveModule()">Añadir Modulo</button>
           <br>
           <div class="text-center">
-            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram.program.id]" type="button"
-              class="btn btn-outline-primary btn-sm">Guardar</button>
+            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram?.program?.id]" type="button" class="btn btn-outline-primary btn-sm">Guardar</button>
           </div>
-        </div>
       </form>
     </div>
   </div>
-  <br>
+</div>
