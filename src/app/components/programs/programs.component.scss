@@ -3,7 +3,7 @@
     height: auto;
     width: auto;
     padding-left: 30px;
-    padding-top:  50px;
+    padding-top:  15px;
     display: inline-block;
   }
 
@@ -27,6 +27,7 @@ a {
     box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
     transition: all 250ms;
     overflow: hidden;
+    
   }
   
 a::before {
@@ -53,12 +54,12 @@ a:hover::before {
   }
   
 button {
-    padding: 10px 25px;
+    padding: 10px 30px;
     border: unset;
     border-radius: 15px;
     color: #e8e8e8;
     z-index: 1;
-    background: #212121;
+    background: #290a5a;
     position: relative;
     font-weight: 1000;
     font-size: 15px;
@@ -66,6 +67,7 @@ button {
     box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
     transition: all 250ms;
     overflow: hidden;
+    margin-left: 30px;
   }
   
 button::before {

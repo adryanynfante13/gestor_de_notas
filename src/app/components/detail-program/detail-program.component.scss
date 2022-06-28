@@ -3,7 +3,7 @@ button {
   margin-right: 50px;
   border: unset;
   border-radius: 15px;
-  color: #c8b6fa;
+  color: #f6f3fd;
   z-index: 1;
   background: #381599;
   position: relative;
@@ -23,7 +23,7 @@ button::before {
   height: 100%;
   width: 0;
   border-radius: 15px;
-  background-color: #8e86ad;
+  background-color: #513894;
   z-index: -1;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(25, 80, 197, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(22, 61, 187, 0.27);
