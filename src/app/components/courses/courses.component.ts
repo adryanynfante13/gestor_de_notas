@@ -103,3 +103,4 @@ export class CoursesComponent implements OnInit {
   }
 
 }
+

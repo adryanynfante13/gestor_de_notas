@@ -1,0 +1,21 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Añadir Estudiante a Programa</h5>
+  <button type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="assignStudentForm">
+    <label for="id" class="form-label"><strong>Buscar Estudiante</strong></label>
+    <input type="text" 
+    formControlName="id"
+     class="form-control"
+     placeholder="número de documento del estudiante"
+      aria-describedby="passwordHelpBlock" 
+      required>
+    <br>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Buscar</button>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary">Save changes</button>
+</div>

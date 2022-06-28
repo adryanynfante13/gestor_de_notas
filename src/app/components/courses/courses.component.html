@@ -19,7 +19,7 @@
           <br>
           <div class="text-start">
             <form [formGroup]="modulesForm">
-              <div formArrayName="modules">
+              <div>
                 <div *ngFor="let modulos of modules.controls; let i = index;">
                   <div>
                     <label for="name"><strong> Nombre de Modulo</strong></label><br />
@@ -27,7 +27,7 @@
                   </div>
                   <div>
                     <label for="percentage"><strong> Porcentaje</strong> </label><br />
-                    <input type="number" formControlName="percentage" class="form-control"  min="1" required />
+                    <input type="number" formControlName="percentage" class="form-control" min="1" required />
                   </div>
                   <div>
                     <label style="display:none ;" for="score">Nota:</label><br />
@@ -42,7 +42,8 @@
           </div>
           <br>
           <div class="text-center">
-            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram.program.id]" type="button" class="btn btn-outline-primary btn-sm">Guardar</button>
+            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram.program.id]" type="button"
+              class="btn btn-outline-primary btn-sm">Guardar</button>
           </div>
         </div>
       </form>

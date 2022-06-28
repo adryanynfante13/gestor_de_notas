@@ -22,5 +22,9 @@ export class UsersService {
     let direction = this.url + 'user';
     return this.http.post(direction, user, { responseType: 'text'});
   }
+  getStudent(id : string):Observable<UserI>{
+    let direction = this.url + 'student/' + id;
+    return this.http.get<UserI>(direction);
+  }
   
 }

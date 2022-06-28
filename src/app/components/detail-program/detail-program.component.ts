@@ -5,6 +5,8 @@ import { ProgramService } from 'src/app/shared/services/program.service'
 import { FullProgramI } from '../../shared/modals/fullProgram-i';
 import { CourseI } from '../../shared/modals/course-i';
 
+
+
 @Component({
   selector: 'app-detail-program',
   templateUrl: './detail-program.component.html',
@@ -13,6 +15,8 @@ import { CourseI } from '../../shared/modals/course-i';
 export class DetailProgramComponent implements OnInit {
   fullProgram: FullProgramI | undefined
   courses: CourseI[] | undefined
+ 
+
 
   constructor(
     private programService: ProgramService,
@@ -24,6 +28,7 @@ export class DetailProgramComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getProgram(`${id}`);
+
   }
 
 
@@ -33,5 +38,6 @@ export class DetailProgramComponent implements OnInit {
       this.courses = data.program.courses;
     })
   }
+
 
 }

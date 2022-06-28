@@ -32,6 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AssignStudentComponent } from './components/assign-student/assign-student.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProgramComponent,
     StudentComponent,
     DetailProgramComponent,
+    AssignStudentComponent,
   ],
   imports: [
     BrowserModule,
