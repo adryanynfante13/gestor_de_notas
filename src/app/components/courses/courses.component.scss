@@ -6,13 +6,13 @@
     font-size: 15px;
 }
 
-button,a {
+.boton {
     padding: 10px 25px;
     border: unset;
     border-radius: 15px;
-    color: #212121;
+    color: #fffdfd;
     z-index: 1;
-    background: #e8e8e8;
+    background: #37098d;
     position: relative;
     font-weight: 1000;
     font-size: 13px;
@@ -20,9 +20,10 @@ button,a {
     box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
     transition: all 250ms;
     overflow: hidden;
+    margin-top: 5px;
   }
   
-  button::before {
+  .boton::before {
     content: "";
     position: absolute;
     top: 0;
@@ -37,11 +38,51 @@ button,a {
     transition: all 250ms
   }
   
-  button:hover {
+  .boton:hover {
     color: #e8e8e8;
   }
   
-  button:hover::before {
+  .boton:hover::before {
     width: 100%;
   }
   
+
+  .boton-danger {
+    padding: 10px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #fffdfd;
+    z-index: 1;
+    background: #ff0000;
+    position: relative;
+    font-weight: 1000;
+    font-size: 13px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(54, 13, 121, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(54, 13, 131, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    margin-top: 5px;
+  }
+  
+  .boton-danger::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #fd1919;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(25, 80, 197, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(22, 61, 187, 0.27);
+    transition: all 250ms
+  }
+  
+  .boton-danger:hover {
+    color: #e8e8e8;
+  }
+  
+  .boton-danger:hover::before {
+    width: 100%;
+  }

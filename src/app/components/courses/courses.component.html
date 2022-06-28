@@ -14,17 +14,38 @@
         </div>
         <div class="mb-3">
           <label style="display:none" for="average" class="form-label"><strong>Descripción del curso</strong> </label>
-          <input style="display:none" type="text" formControlName="average" class="form-control" aria-describedby="passwordHelpBlock" required>
+          <input style="display:none" type="text" formControlName="average" class="form-control"
+            aria-describedby="passwordHelpBlock" required>
           <br>
-          <div class="text-end">
-            <a routerLink="/modules" class="btn btn-primary btn-sm">Agregar Modulos</a>
+          <div class="text-start">
+            <form [formGroup]="modulesForm">
+              <div formArrayName="modules">
+                <div *ngFor="let modulos of modules.controls; let i = index;">
+                  <div>
+                    <label for="name"><strong> Nombre de Modulo</strong></label><br />
+                    <input formControlName="name" type="text" class="form-control" required />
+                  </div>
+                  <div>
+                    <label for="percentage"><strong> Porcentaje</strong> </label><br />
+                    <input type="number" formControlName="percentage" class="form-control"  min="1" required />
+                  </div>
+                  <div>
+                    <label style="display:none ;" for="score">Nota:</label><br />
+                    <input type="text" formControlName="score" class="form-control" required style="display:none ;"
+                      value=0 />
+                  </div>
+                  <button class="boton-danger" (click)="deleteModule(i)">Borrar</button>
+                </div>
+              </div>
+              <button class="boton" (click)="addModules()"> Añadir Modulo + </button>
+            </form>
           </div>
           <br>
           <div class="text-center">
-            <button (click)="saveCourse()" type="button" class="btn btn-outline-primary btn-sm">Guardar</button>
+            <button class="boton" (click)="saveCourse()" type="button">Guardar</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  
+  <br>

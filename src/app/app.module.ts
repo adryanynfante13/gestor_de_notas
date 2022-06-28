@@ -15,22 +15,22 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-
-// routing
-import { AppRoutingModule } from './app-routing.module';
-
-// service
-import { AuthService } from './shared/services/auth.service';
+import { StudentComponent } from './components/student/student.component';
+import { DetailProgramComponent } from './components/detail-program/detail-program.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ProgramComponent } from './components/program/program.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { StudentComponent } from './components/student/student.component';
-import { DetailProgramComponent } from './components/detail-program/detail-program.component';
 
+// routing
+import { AppRoutingModule } from './app-routing.module';
+
+// service
+import { AuthService } from './shared/services/auth.service';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
