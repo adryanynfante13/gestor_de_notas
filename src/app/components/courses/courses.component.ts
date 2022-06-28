@@ -16,8 +16,9 @@ import { ModuleI } from 'src/app/shared/modals/module-i';
 export class CoursesComponent implements OnInit {
   fullProgram!: FullProgramI;
   courses: CourseI[] | undefined
+  moduleList: ModuleI[] = []; 
   formCourse: FormGroup = new FormGroup({});
-  modulesForm: FormGroup = new FormGroup({});
+  modulesForm: FormGroup = new FormGroup({})
   
   get modules(): FormArray {
     return this.modulesForm.get('modules') as FormArray;
@@ -39,21 +40,12 @@ export class CoursesComponent implements OnInit {
       {
         name: new FormControl ('', [Validators.required]),
         average: new FormControl ('', [Validators.required]),
-        modules : new FormControl ([], [Validators.required])
-
-      }
-    )
-    this.modulesForm = new FormGroup(
-      {
-        name: new FormControl ('', [Validators.required]),
-        percentage: new FormControl ('', [Validators.min(0), Validators.required]),
-        score : new FormControl ('', [Validators.min(0),  Validators.required])
-
+        nameModule: new FormControl ('', [Validators.required]),
+        percentage: new FormControl (0, [Validators.min(0), Validators.required]),
+        score : new FormControl (0, [Validators.min(0),  Validators.required])
       }
     )
     this.crearFormularioModules();
-    this.addModules();
-
   }
 
   getProgram(id: string): void {
@@ -61,24 +53,28 @@ export class CoursesComponent implements OnInit {
       this.fullProgram = data;
       this.courses = data.program.courses;
     })
-    console.log(this.fullProgram)
+  }
+
+  saveModule(){
+    const module: ModuleI = {
+      name: this.formCourse.value.nameModule,
+      percentage: this.formCourse.value.percentage,
+      score: 0
+    }
+    this.moduleList.push(module);
+    return module
   }
 
   saveCourse(){
     const course: CourseI = {
       name: this.formCourse.value.name,
       average: 0,
-      modules: [{
-        name: "modulo1",
-        percentage: 20,
-        score: 0
-      }]
+      modules: this.moduleList
       }
       this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
-      console.log(course);
-      setTimeout(() => {
+      /*setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 2000);*/
   }
   
   crearFormularioModules() {
@@ -86,20 +82,9 @@ export class CoursesComponent implements OnInit {
       modules:this.fb.array([])
     });
   }
- 
 
-  addModules() {
-    const modules = this.fb.group({
-      name: new FormControl(''),
-      percentage: new FormControl(''),
-      score: new FormControl('')
-    });
-    console.log("acá modulos");
-    this.modules.push(modules);
-  }
-
-  deleteModule(indice: number) {
-    this.modules.removeAt(indice);
+  deleteModule(i: number) {
+    this.moduleList.splice(i, 1);
   }
 
 }
