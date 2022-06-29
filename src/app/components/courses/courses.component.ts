@@ -6,7 +6,6 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
 import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 import { ModuleI } from 'src/app/shared/modals/module-i';
-import { ViewChild } from '@angular/core';
 
 
 @Component({
