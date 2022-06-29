@@ -5,6 +5,8 @@ import { ProgramI } from '../modals/program-i';
 import { CourseI } from '../modals/course-i';
 import { ModuleI } from '../modals/module-i';
 import { FullProgramI } from '../modals/fullProgram-i';
+import { UserI } from '../modals/user-i';
+import { StudentI } from '../modals/student-i';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,16 @@ export class ProgramService {
   saveCourse(course: CourseI, id: string): Observable<any> {
     let direction = this.url + 'course/' + id;
     return this.http.put(direction, course, { responseType: 'text'});
+  }
+
+  addStudent(student: StudentI, id: string): Observable<any> {
+    let direction = this.url + 'program/' + id;
+    return this.http.put(direction, student, { responseType: 'text'});
+  }
+
+  getStudentsAll():Observable<StudentI[]>{
+    let direction = this.url + 'students';
+    return this.http.get<StudentI[]>(direction);
   }
 
   saveModules(module: ModuleI): Observable<any> {
