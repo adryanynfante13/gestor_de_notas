@@ -12,7 +12,8 @@ import { UsersService } from 'src/app/shared/services/users.service'
 })
 export class AssignStudentComponent implements OnInit {
   assignStudentForm: FormGroup = new FormGroup({})
-  student: UserI[] | undefined
+  student: UserI | undefined
+  users: UserI[] | undefined
 
 
   constructor(private modalService: ModalSwitchService,  
@@ -24,14 +25,18 @@ export class AssignStudentComponent implements OnInit {
     this.assignStudentForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
     })
+    this.getStudentsAll();
+    this.studentService.getStudentsAll().subscribe((data) => {this.users = data})
  
   }
 
+  getStudentsAll(): void {(this.getStudentsAll)};
+
   getStudent(id: string): void {
     this.studentService.getStudent(id).subscribe((data) => {
-     // this.student = data;
+    this.student = data;
     })
-    console.log(this.studentService)
+    console.log(this.student)
   }
 
 
