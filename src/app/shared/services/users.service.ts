@@ -13,9 +13,9 @@ export class UsersService {
     throw new Error('Method not implemented.');
   }
 
-  private url: string = 'http://localhost:8080/';
+  private url: string = 'https://notes-gestor-sofka.herokuapp.com/';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
   saveUser(user: UserI): Observable<any> {
@@ -32,5 +32,5 @@ export class UsersService {
     let direction = this.url + 'user/' + id;
     return this.http.get<UserI>(direction);
   }
-  
+
 }
