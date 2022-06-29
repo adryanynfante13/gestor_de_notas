@@ -11,6 +11,7 @@ import { StudentI } from '../../shared/modals/student-i';
 
 
 
+
 @Component({
   selector: 'app-detail-program',
   templateUrl: './detail-program.component.html',
@@ -23,9 +24,6 @@ export class DetailProgramComponent implements OnInit {
   programStudents: StudentI[] | undefined 
  
 
-  seleccionar(e: any) {
-    console.log(e.srcElement.value);
-  }
 
   constructor(
     private programService: ProgramService,
@@ -52,6 +50,7 @@ export class DetailProgramComponent implements OnInit {
     })
   }
 
+  
   
 
 

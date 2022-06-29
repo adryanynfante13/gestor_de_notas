@@ -10,6 +10,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { StudentComponent } from './components/student/student.component';
 import { DetailProgramComponent } from './components/detail-program/detail-program.component';
 import { AssignStudentComponent } from './components/assign-student/assign-student.component';
+import { AssignScoreComponent } from './components/assign-score/assign-score.component';
 
 
 import { AuthGuard } from './shared/guard/auth.guard';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'student/:id', component:StudentComponent },
   { path: 'program/:id', component: DetailProgramComponent },
   {path:'assign-student/:id', component: AssignStudentComponent},
+  {path:'assign-score', component: AssignScoreComponent}
 ];
 
 @NgModule({

@@ -41,6 +41,11 @@ export class ProgramService {
     return this.http.get<StudentI[]>(direction);
   }
 
+  getStudent(id : string):Observable<StudentI>{
+    let direction = this.url + 'student/' + id;
+    return this.http.get<StudentI>(direction);
+  }
+
   saveModules(module: ModuleI): Observable<any> {
     let direction = this.url + 'module';
     return this.http.post(direction, module, { responseType: 'text'});

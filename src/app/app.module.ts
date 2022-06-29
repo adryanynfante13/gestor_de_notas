@@ -34,6 +34,7 @@ import { AuthService } from './shared/services/auth.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssignStudentComponent } from './components/assign-student/assign-student.component';
+import { AssignScoreComponent } from './components/assign-score/assign-score.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AssignStudentComponent } from './components/assign-student/assign-stude
     StudentComponent,
     DetailProgramComponent,
     AssignStudentComponent,
+    AssignScoreComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,6 +45,7 @@
                 <th scope="col">Nombre Completo</th>
                 <th scope="col">Documento de Identidad</th>
                 <th scope="col">Correo</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                 <td>{{student.user.fullName}}</td>
                 <td>{{student.user.dni}}</td>
                 <td>{{student.user.email}}</td>
+                <td><button [routerLink]="['/assign-score' ]" routerLinkActive="router-link-active" >Calificar</button></td>
               </tr>
             </tbody>
           </table>
