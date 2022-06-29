@@ -44,7 +44,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        window.alert("Usuario o contraseña incorrecta, valida tus datos");
       });
   }
 
@@ -81,7 +81,7 @@ export class AuthService {
         this.router.navigate(['sign-in']);
       })
       .catch((error) => {
-        window.alert(error);
+        window.alert("Usuario no resgistrado");
       });
   }
 

@@ -6,6 +6,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
 import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 import { ModuleI } from 'src/app/shared/modals/module-i';
+import { ViewChild } from '@angular/core';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class CoursesComponent implements OnInit {
   courses: CourseI[] | undefined
   moduleList: ModuleI[] = []; 
   formCourse: FormGroup = new FormGroup({});
-  modulesForm: FormGroup = new FormGroup({})
+  modulesForm: FormGroup = new FormGroup({});
+
   
   get modules(): FormArray {
     return this.modulesForm.get('modules') as FormArray;
@@ -40,9 +42,9 @@ export class CoursesComponent implements OnInit {
       {
         name: new FormControl ('', [Validators.required]),
         average: new FormControl ('', [Validators.required]),
-        nameModule: new FormControl ('', [Validators.required]),
-        percentage: new FormControl (0, [Validators.min(0), Validators.required]),
-        score : new FormControl (0, [Validators.min(0),  Validators.required])
+        nameModule: new FormControl ('', []),
+        percentage: new FormControl (0, [Validators.min(1)]),
+        score : new FormControl (0, [Validators.min(0)])
       }
     )
     this.crearFormularioModules();
@@ -86,6 +88,8 @@ export class CoursesComponent implements OnInit {
   deleteModule(i: number) {
     this.moduleList.splice(i, 1);
   }
+
+
 
 }
 
