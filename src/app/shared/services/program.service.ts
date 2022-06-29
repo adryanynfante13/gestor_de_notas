@@ -42,7 +42,7 @@ export class ProgramService {
   }
 
   getStudent(id : string):Observable<StudentI>{
-    let direction = this.url + 'student/' + id;
+    let direction = this.url + 'students/' + id;
     return this.http.get<StudentI>(direction);
   }
 

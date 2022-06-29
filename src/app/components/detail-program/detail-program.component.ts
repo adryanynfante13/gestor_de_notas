@@ -20,8 +20,9 @@ import { StudentI } from '../../shared/modals/student-i';
 export class DetailProgramComponent implements OnInit {
   fullProgram: FullProgramI | undefined
   courses: CourseI[] | undefined
-  students: UserI[] | undefined 
+  students: UserI | undefined 
   programStudents: StudentI[] | undefined 
+  programStudent: StudentI | undefined 
  
 
 
@@ -39,7 +40,9 @@ export class DetailProgramComponent implements OnInit {
     this.getStudentsAll();
     this.programService.getStudentsAll().subscribe((data) => {
       this.programStudents = data})
+      this.getStudent(`${id}`);
   }
+
 
   getStudentsAll(): void {(this.getStudentsAll)};
 
@@ -51,7 +54,12 @@ export class DetailProgramComponent implements OnInit {
   }
 
   
-  
+  getStudent(id: string): void {
+    this.programService.getStudent(id).subscribe((data) => {
+      this.programStudent= data;    
+      console.log(data)
+    })
+  }
 
 
 }
