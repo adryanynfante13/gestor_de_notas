@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit} from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs';
 import { FullProgramI } from 'src/app/shared/modals/fullProgram-i'
-import { StudentI } from 'src/app/shared/modals/student-i'
+import { StudentI } from 'src/app/shared/modals/student-i';
 import { UserI } from 'src/app/shared/modals/user-i'
-import { ModalSwitchService } from 'src/app/shared/services/modal-switch.service'
 import { UsersService } from 'src/app/shared/services/users.service'
 import { ProgramService } from '../../shared/services/program.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 @Component({
   selector: 'app-assign-student',
@@ -14,21 +18,19 @@ import { ProgramService } from '../../shared/services/program.service';
   styleUrls: ['./assign-student.component.scss'],
 })
 export class AssignStudentComponent implements OnInit {
-  assignStudentForm: FormGroup = new FormGroup({})
 
+  assignStudentForm: FormGroup = new FormGroup({})
   fullProgram!: FullProgramI;
   students: UserI[] | undefined 
   student!: UserI
   users: UserI[] | undefined
-  
-  
 
 
-  constructor(private modalService: ModalSwitchService,  
-    private router: Router, 
+  constructor(   
     private studentService: UsersService,
     private route: ActivatedRoute,
     private programService: ProgramService ) {}
+
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -41,6 +43,8 @@ export class AssignStudentComponent implements OnInit {
 
   }
 
+
+
   getProgram(id: string): void {
     this.programService.getProgram(id).subscribe((data) => {
       this.fullProgram = data;
@@ -50,10 +54,9 @@ export class AssignStudentComponent implements OnInit {
   getUsersAll(): void {(this.getUsersAll)};
 
   getStudent(id: string): void {
-    this.studentService.getStudent(id).subscribe((data) => {
+    this.studentService.getStudent(id).subscribe((data) => {3
     this.student = data;
-    })
-    console.log(this.student)
+    });
   }
 
   addStudent(student: UserI) {
@@ -70,5 +73,6 @@ export class AssignStudentComponent implements OnInit {
     this.programService.addStudent(assingStudent, this.fullProgram.program.id as string).subscribe()
     console.log(assingStudent)
   }
+
 
 }

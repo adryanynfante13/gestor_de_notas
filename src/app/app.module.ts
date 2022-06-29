@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { DataTablesModule } from "angular-datatables";
 
 
 // components
@@ -62,6 +63,7 @@ import { AssignStudentComponent } from './components/assign-student/assign-stude
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    DataTablesModule,
 
   ],
   providers: [AuthService, HttpClientModule],

@@ -1,23 +1,35 @@
-<div>
-  <!--colocar aca ngfor para listar students-->
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre Completo</th>
-        <th scope="col">Documento de Identidad</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students">
-        <th scope="col">{{student.id}}</th>
-        <td>{{student.fullName}}</td>
-        <td>{{student.dni}}</td>
-        <td>{{student.email}}</td>
-        <td><button (click)="addStudent(student)">Añadir</button></td>
-      </tr>
-    </tbody>
-  </table>
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="card text-center">
+      <div class="card-header fs-4 font1">
+        <b>Lista de Estudiantes</b>
+      </div>
+      <br>
+    <!--colocar aca ngfor para listar students-->
+    <div class="table-responsive"> 
+      <br>
+      <table mdbTable class="z-depth-1" class="table table-hover" >
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Documento de Identidad</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <th scope="col">{{student.id}}</th>
+            <td>{{student.fullName}}</td>
+            <td>{{student.dni}}</td>
+            <td>{{student.email}}</td>
+            <td><button (click)="addStudent(student)">Añadir</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
