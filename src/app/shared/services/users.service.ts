@@ -22,8 +22,14 @@ export class UsersService {
     let direction = this.url + 'user';
     return this.http.post(direction, user, { responseType: 'text'});
   }
+
+  getStudentsAll():Observable<UserI[]>{
+    let direction = this.url + 'students';
+    return this.http.get<UserI[]>(direction);
+  }
+
   getStudent(id : string):Observable<UserI>{
-    let direction = this.url + 'student/' + id;
+    let direction = this.url + 'students/' + id;
     return this.http.get<UserI>(direction);
   }
   

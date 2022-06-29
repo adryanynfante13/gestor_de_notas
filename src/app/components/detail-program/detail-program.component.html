@@ -12,7 +12,7 @@
       <h5>Fecha fin: {{fullProgram?.program?.finishDate}}</h5>
       <div class="text-end">
         <button [routerLink]="['/course', fullProgram?.program?.id]">Añadir Cursos</button>
-        <button>Añadir Estudiantes</button>
+        <button [routerLink]="['/assign-student', fullProgram?.program?.id]">Añadir Estudiantes</button>
       </div>
     </div>
     <div class="text-center">

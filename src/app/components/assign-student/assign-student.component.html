@@ -4,7 +4,7 @@
   <button type="button" class="btn-close" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="assignStudentForm">
+  <form [formGroup]="assignStudentForm" *ngFor="let student of users">
     <label for="id" class="form-label"><strong>Buscar Estudiante</strong></label>
     <input type="text" 
     formControlName="id"
@@ -13,7 +13,7 @@
       aria-describedby="passwordHelpBlock" 
       required>
     <br>
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Buscar</button>
+    <button type="button" class="btn btn-primary" (click)="getStudent(student.id)" data-bs-dismiss="modal" >Buscar</button>
   </form>
 </div>
 <div class="modal-footer">
