@@ -78,6 +78,8 @@ export class CoursesComponent implements OnInit {
         window.location.reload();
       }, 2000);*/
   }
+
+
   
   crearFormularioModules() {
     this.modulesForm = this.fb.group({
