@@ -79,8 +79,8 @@ date() {
   }
   let mounth = date.getMonth()+1;
   let finishMount = '';
-    if (mounth<10) 
-    finishMount = '0' + mounth;
+    if (mounth<12) 
+    finishMount = '' + mounth;
     let finishDate = date.getFullYear() + '-' + finishMount + '-' + date.getDate();
   return finishDate
   }

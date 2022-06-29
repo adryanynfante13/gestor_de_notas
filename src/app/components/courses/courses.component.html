@@ -7,31 +7,26 @@
         <b>Agregar Curso</b>
       </div>
       <br>
-      <form [formGroup]="formCourse">
+      <form [formGroup]="formCourse" novalidate #f="ngForm">
         <div class="mb-3">
           <label for="name" class="form-label"><strong> Nombre del curso</strong></label>
           <input type="text" formControlName="name" class="form-control" aria-describedby="passwordHelpBlock" ngModel
             required>
-        </div>
-        <div class="mb-3">
-          <label style="display:none" for="average" class="form-label"><strong>Descripción del curso</strong> </label>
-          <input style="display:none" type="text" formControlName="average" class="form-control"
-            aria-describedby="passwordHelpBlock" ngModel required>
         </div>
 
         <br>
         <div class="mb-3">
           <label for="nameModule" class="form-label"><strong> Nombre de Modulo</strong></label><br />
           <input type="text" formControlName="nameModule" class="form-control" #nameModule
-            aria-describedby="passwordHelpBlock" />
+            aria-describedby="passwordHelpBlock" required />
         </div>
         <div>
           <label for="percentage"><strong> Porcentaje</strong> </label><br />
-          <input type="number" formControlName="percentage" class="form-control" #percentage min="1" />
+          <input type="number" formControlName="percentage" class="form-control" #percentage min="1"  />
         </div>
         <div>
           <label style="display:none ;" for="score">Nota:</label><br />
-          <input type="number" formControlName="score" class="form-control" style="display:none ;" />
+          <input type="number" formControlName="score" class="form-control" style="display:none ;"  />
         </div>
         <button class="boton" type="submit" (click)="saveModule(); nameModule.value=''; percentage.value=''">Añadir
           Modulo</button>
@@ -53,7 +48,7 @@
         </section>
         <div class="text-end">
           <br>
-          <button (click)="saveCourse()" [routerLink]="['/program', fullProgram?.program?.id]" class="boton">Guardar
+          <button (click)="saveCourse()" [routerLink]="['/program', fullProgram?.program?.id]" [disabled]="f.invalid" class="boton">Guardar
             Curso</button>
         </div>
         <br>

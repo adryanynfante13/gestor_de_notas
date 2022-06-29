@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
     this.formCourse = new FormGroup(
       {
         name: new FormControl ('', [Validators.required]),
-        average: new FormControl ('', [Validators.required]),
+        average: new FormControl ('', []),
         nameModule: new FormControl ('', []),
         percentage: new FormControl (0, [Validators.min(1)]),
         score : new FormControl (0, [Validators.min(0)])
