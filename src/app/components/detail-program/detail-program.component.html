@@ -25,7 +25,6 @@
         <h5>Promedio {{course.average}}</h5>
       </div>
     </div>
-
     <div class="text-center">
       <h5><strong>Estudiantes del Programa</strong> </h5>
       <br>
@@ -41,17 +40,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="col">b6df4bgf6dhn5454</th>
-              <td>Lorena Castro</td>
-              <td>10006565</td>
-              <td>lorena@gmail.com</td>
-            </tr>
-            <tr>
-              <th scope="col">eds6fg4dr9t4hj6dg</th>
-              <td>Adryan Ynfante</td>
-              <td>646567</td>
-              <td>adryan@gmail.com</td>
+            <tr *ngFor="let student of programStudents">
+              <th scope="col">{{student.user.id}}</th>
+              <td>{{student.user.fullName}}</td>
+              <td>{{student.user.dni}}</td>
+              <td>{{student.user.email}}</td>
             </tr>
           </tbody>
         </table>

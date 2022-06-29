@@ -23,13 +23,13 @@ export class UsersService {
     return this.http.post(direction, user, { responseType: 'text'});
   }
 
-  getStudentsAll():Observable<UserI[]>{
-    let direction = this.url + 'students';
+  getUsersAll():Observable<UserI[]>{
+    let direction = this.url + 'user';
     return this.http.get<UserI[]>(direction);
   }
 
   getStudent(id : string):Observable<UserI>{
-    let direction = this.url + 'students/' + id;
+    let direction = this.url + 'user/' + id;
     return this.http.get<UserI>(direction);
   }
   

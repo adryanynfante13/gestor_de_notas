@@ -1,21 +1,23 @@
-
-<div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Añadir Estudiante a Programa</h5>
-  <button type="button" class="btn-close" aria-label="Close"></button>
-</div>
-<div class="modal-body">
-  <form [formGroup]="assignStudentForm" *ngFor="let student of users">
-    <label for="id" class="form-label"><strong>Buscar Estudiante</strong></label>
-    <input type="text" 
-    formControlName="id"
-     class="form-control"
-     placeholder="número de documento del estudiante"
-      aria-describedby="passwordHelpBlock" 
-      required>
-    <br>
-    <button type="button" class="btn btn-primary" (click)="getStudent(student.id)" data-bs-dismiss="modal" >Buscar</button>
-  </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary">Save changes</button>
+<div>
+  <!--colocar aca ngfor para listar students-->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Documento de Identidad</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <th scope="col">{{student.id}}</th>
+        <td>{{student.fullName}}</td>
+        <td>{{student.dni}}</td>
+        <td>{{student.email}}</td>
+        <td><button (click)="addStudent(student)">Añadir</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
