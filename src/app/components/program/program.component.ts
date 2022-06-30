@@ -52,7 +52,7 @@ saveFullProgram() {
   console.log(fullProgram)
   setTimeout(() => {
     window.location.reload();
-  }, 2000);
+  }, 1000);
 }
 program(){
   const program: ProgramI = {

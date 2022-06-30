@@ -31,7 +31,7 @@ export class AssignScoreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getStudent(`${id}`);
     this.formScore = new FormGroup(
-      {score: new FormControl ('', [Validators.required])}
+      {score: new FormControl ('', [Validators.required,  Validators.min(0),  Validators.max(1)])}
     )
   }
 
@@ -39,7 +39,7 @@ export class AssignScoreComponent implements OnInit {
     this.programService.getStudent(id).subscribe((data) => {
       this.programStudent= data;
       this.courses = data.program.courses;
-      console.log(data)
+     // console.log(data)
     })
   }
 
@@ -52,7 +52,7 @@ export class AssignScoreComponent implements OnInit {
       newScore: this.formScore.value.score
     }
     this.programService.assignScore(changeScore).subscribe()
-    console.log(changeScore)
+   // console.log(changeScore)
   }
 }
 

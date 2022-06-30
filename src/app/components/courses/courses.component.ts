@@ -73,9 +73,9 @@ export class CoursesComponent implements OnInit {
       modules: this.moduleList
       }
       this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
-      /*setTimeout(() => {
+      setTimeout(() => {
         window.location.reload();
-      }, 2000);*/
+      }, 1000);
   }
 
 

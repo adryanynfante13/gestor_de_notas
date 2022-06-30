@@ -1,63 +1,40 @@
 <app-header></app-header>
-<br>
 <div class="container">
   <div class="row">
-    <div class="shadow p-4 mb-3 bg-body rounded">
-      <div class="text-center">
-        <h2>Datos del Estudiante</h2>
+    <div class="card text-center rounded" >
+      <div class="card-header fs-4 font1">
+        <h2><strong>Datos del Estudiante</strong> </h2>
       </div>
-      <h5>{{programStudent?.user?.fullName}}</h5>
-      <h5>{{programStudent?.user?.email}}</h5>
-     
+      <div class="text-start">
+        <br>
+      <h5> <strong>Nombre Completo: </strong> {{programStudent?.user?.fullName}}</h5>
+      <h5><strong>Correo: </strong>{{programStudent?.user?.email}}</h5>
     </div>
-    <div class="text-center">
-      <div class="card text-center">
+    </div>
+    <br>
+      <div class="card text-center rounded">
         <div class="card-header fs-4 font1">
           <b>Cursos del Programa</b>
         </div>
       </div>
       <br>
-      <div class="card" style="width: 25rem;" *ngFor="let course of courses; index as iCourse">
-        <div class="shadow p-4 mb-3 bg-body rounded">
-          <h5>Curso: {{course.name}}</h5>
+
+      <div class="card text-center rounded">
+        <div class="card-header fs-4 font1" *ngFor="let course of courses; index as iCourse">
+          <h4> <strong>Curso: </strong> {{course.name}}</h4>
           <div *ngFor="let module of course.modules; index as iModule">
-            <h5>Modulo: {{module?.name}}</h5>
-            <h5>Porcentaje: {{module?.percentage}}%</h5>
-            <form [formGroup]="formScore">
-            <label for="score" class="form-label">Añadir nota:</label> 
-            <input type="number" formControlName="score" min="0" max="5">
+            <p><strong>Modulo: </strong> {{module?.name}}</p>
+            <p> <strong>Porcentaje: </strong> {{module?.percentage}}%</p>
+            <form [formGroup]="formScore" >
+              <label for="score" class="form-label"><strong>Añadir nota: </strong> </label>
+              <input type="number" formControlName="score" min="0" max="5" required >
             </form>
-            <button (click)="assignScore(programStudent!, iCourse, iModule)">Asignar nota</button>
+            <br>
+            <button (click)="assignScore(programStudent!, iCourse, iModule)" >Asignar nota</button>
+            <hr>
           </div>
         </div>
       </div>
     </div>
-  
-        <!-- <div>
-        colocar aca ngfor para listar cursos y modulos
-          <table class="table table-hover">
-            <thead>
-              <tr>
-             <th scope="col">Id</th> 
-                <th scope="col">Curso</th>
-                <th scope="col">Nombre de modulo</th>
-                <th scope="col">Nota</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let student of programStudents">
-              <th scope="col">{{student.user.id}}</th>
-                <td>{{}}</td>
-                <td>{{}}</td>
-                <td>{{}}</td>
-                <td><button  >Calificar</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
-      </div>
-    </div>
-
-
+  </div>
 
