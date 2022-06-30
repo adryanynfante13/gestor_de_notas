@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -26,6 +24,16 @@ import { ModulesComponent } from './components/modules/modules.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ProgramComponent } from './components/program/program.component';
 
+// componentes de la Gráfica
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatTableModule } from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
+
 // routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,6 +43,9 @@ import { AuthService } from './shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssignStudentComponent } from './components/assign-student/assign-student.component';
 import { AssignScoreComponent } from './components/assign-score/assign-score.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GraficaDetalleComponent } from './components/grafica-detalle/grafica-detalle.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -54,9 +65,10 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
     DetailProgramComponent,
     AssignStudentComponent,
     AssignScoreComponent,
+    GraficaDetalleComponent,
+
   ],
   imports: [
-    BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -67,6 +79,8 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    DataTablesModule,
+    BrowserAnimationsModule,
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
@@ -89,6 +103,21 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
     MatFormFieldModule,
     MatPaginatorModule,
     MatSortModule,
+    NgxChartsModule
+
+  ],
+  exports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatTableModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],

@@ -17,13 +17,13 @@ export class ProgramService {
   push(arg0: string) {
     throw new Error('Method not implemented.');
   }
-  private url: string = 'http://localhost:8080/';
+  private url: string = 'https://notes-gestor-sofka.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
   saveProgram(fullProgram: FullProgramI): Observable<any> {
     let direction = this.url + 'program';
-    return this.http.post<any>(direction, fullProgram.program, { 
+    return this.http.post<any>(direction, fullProgram.program, {
       responseType: 'text' as 'json',
     });
   }
