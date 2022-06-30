@@ -43,9 +43,9 @@ import { AuthService } from './shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssignStudentComponent } from './components/assign-student/assign-student.component';
 import { AssignScoreComponent } from './components/assign-score/assign-score.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraficaDetalleComponent } from './components/grafica-detalle/grafica-detalle.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -105,19 +105,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSortModule,
     NgxChartsModule
 
-  ],
-  exports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgxChartsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatTableModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSortModule
   ],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent],
