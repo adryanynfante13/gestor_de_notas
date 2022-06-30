@@ -40,7 +40,7 @@ export class DetailProgramComponent implements OnInit {
     this.getStudentsAll();
     this.programService.getStudentsAll().subscribe((data) => {
       this.programStudents = data})
-      this.getStudent(`${id}`);
+    this.getStudent(`${id}`);
   }
 
 

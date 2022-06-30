@@ -54,7 +54,7 @@
                 <td>{{student.user.fullName}}</td>
                 <td>{{student.user.dni}}</td>
                 <td>{{student.user.email}}</td>
-                <td><button (click)="getStudent(student.user.id)">Calificar</button></td>
+                <td><button [routerLink]="['/assign-score', student.user.id]" (click)="getStudent(student.user.id)">Calificar</button></td>
               </tr>
             </tbody>
           </table>

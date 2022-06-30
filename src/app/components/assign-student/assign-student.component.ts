@@ -7,8 +7,6 @@ import { StudentI } from 'src/app/shared/modals/student-i';
 import { UserI } from 'src/app/shared/modals/user-i'
 import { UsersService } from 'src/app/shared/services/users.service'
 import { ProgramService } from '../../shared/services/program.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
 
 

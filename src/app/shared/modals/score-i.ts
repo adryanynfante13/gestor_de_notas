@@ -1,4 +1,4 @@
-export interface changeScoreI {
+export interface ChangeScoreI {
     idProgram: string, 
     idStudent: string,
     courseName: string,
