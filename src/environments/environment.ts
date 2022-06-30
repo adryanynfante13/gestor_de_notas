@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCPJwHablRVmzAIfZjOEvzGDQd5gEAtaEs",
-    authDomain: "retosofka-24f0f.firebaseapp.com",
-    projectId: "retosofka-24f0f",
-    storageBucket: "retosofka-24f0f.appspot.com",
-    messagingSenderId: "218656744268",
-    appId: "1:218656744268:web:4002b7c46fde1ae054a5e9"
+    apiKey: "AIzaSyBrVRF_Io_BR9KD6KDC6RATbhahrANpHzw",
+    authDomain: "forumsofka.firebaseapp.com",
+    projectId: "forumsofka",
+    storageBucket: "forumsofka.appspot.com",
+    messagingSenderId: "828321197532",
+    appId: "1:828321197532:web:bb047448cf402fbd377319"
   }
-};
 
+}
