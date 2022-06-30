@@ -24,9 +24,10 @@
       <br>
       <div class="text-center">
         <br>
-      <span routerLink="/create-user"> <strong>Volver a creación de usuario</strong> </span>
-
-      <span routerLink="/dashboard"> <strong>Volver a Inicio</strong> </span>
+      <span 
+      [routerLink]="['/create-user']" > <strong>Volver a creación de usuario</strong> </span>      
+      <br>
+      <button class="button" [routerLink]="['//dashboard']"><strong>Volver a Inicio</strong> </button>
     </div>
     </div>
   </div>
