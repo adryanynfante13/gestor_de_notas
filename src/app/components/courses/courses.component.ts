@@ -92,6 +92,7 @@ export class CoursesComponent implements OnInit {
 
   deleteModule(i: number) {
     this.moduleList.splice(i, 1);
+    this.toastr.info('Modulo Eliminado', 'Info')
   }
 
 
