@@ -7,6 +7,8 @@ import { ModuleI } from '../modals/module-i';
 import { FullProgramI } from '../modals/fullProgram-i';
 import { UserI } from '../modals/user-i';
 import { StudentI } from '../modals/student-i';
+import { StudentProgramI } from '../modals/studentProgram-i';
+import { ChangeScoreI } from '../modals/score-i';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +43,9 @@ export class ProgramService {
     return this.http.get<StudentI[]>(direction);
   }
 
-  getStudent(id : string):Observable<StudentI>{
+  getStudent(id : string):Observable<StudentProgramI>{
     let direction = this.url + 'students/' + id;
-    return this.http.get<StudentI>(direction);
+    return this.http.get<StudentProgramI>(direction);
   }
 
   saveModules(module: ModuleI): Observable<any> {
@@ -60,5 +62,9 @@ export class ProgramService {
     return this.http.get<FullProgramI>(direction);
   }
 
+  assignScore(score: ChangeScoreI): Observable<any> {
+    let direction = this.url + 'changescore';
+    return this.http.put(direction, score, { responseType: 'text'});
+  }
 
 }

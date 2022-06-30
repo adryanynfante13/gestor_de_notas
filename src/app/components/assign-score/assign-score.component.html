@@ -6,8 +6,8 @@
       <div class="text-center">
         <h2>Datos del Estudiante</h2>
       </div>
-      <h5></h5>
-      <h5> </h5>
+      <h5>{{programStudent?.user?.fullName}}</h5>
+      <h5>{{programStudent?.user?.email}}</h5>
      
     </div>
     <div class="text-center">
@@ -17,9 +17,18 @@
         </div>
       </div>
       <br>
-      <div class="card" style="width: 25rem;" *ngFor="let course of courses">
+      <div class="card" style="width: 25rem;" *ngFor="let course of courses; index as iCourse">
         <div class="shadow p-4 mb-3 bg-body rounded">
-          <h5>{{course.name}}</h5>
+          <h5>Curso: {{course.name}}</h5>
+          <div *ngFor="let module of course.modules; index as iModule">
+            <h5>Modulo: {{module?.name}}</h5>
+            <h5>Porcentaje: {{module?.percentage}}%</h5>
+            <form [formGroup]="formScore">
+            <label for="score" class="form-label">Añadir nota:</label> 
+            <input type="number" formControlName="score" min="0" max="5">
+            </form>
+            <button (click)="assignScore(programStudent!, iCourse, iModule)">Asignar nota</button>
+          </div>
         </div>
       </div>
     </div>
