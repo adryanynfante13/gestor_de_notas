@@ -13,6 +13,7 @@
       <div class="text-end">
         <button [routerLink]="['/course', fullProgram?.program?.id]">Añadir Cursos</button>
         <button [routerLink]="['/assign-student', fullProgram?.program?.id]">Añadir Estudiantes</button>
+        <!-- <button [routerLink]="['/graph-program', fullProgram?.program?.id]">Gráfica de Programa</button>-->
       </div>
     </div>
     <div class="text-center">
@@ -22,7 +23,7 @@
         </div>
       </div>
       <br>
-      <div class="card" style="width: 25rem;" *ngFor="let course of courses">
+      <div class="card" style="width: 20rem;" *ngFor="let course of courses">
         <div class="shadow p-4 mb-3 bg-body rounded">
           <h5>{{course.name}}</h5>
           <h5>Promedio {{course.average}}</h5>
@@ -54,15 +55,16 @@
                 <td>{{student.user.fullName}}</td>
                 <td>{{student.user.dni}}</td>
                 <td>{{student.user.email}}</td>
-                <td><button [routerLink]="['/assign-score', student.user.id]" (click)="getStudent(student.user.id)">Calificar</button></td>
+                <td><button [routerLink]="['/assign-score', student.user.id]"
+                    (click)="getStudent(student.user.id)">Calificar</button></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <div class="text-center"    >
-    <app-grafica-detalle></app-grafica-detalle>
-  </div>
+    <div class="grafica">
+      <app-grafica-detalle></app-grafica-detalle>
+    </div>
   </div>
 </div>

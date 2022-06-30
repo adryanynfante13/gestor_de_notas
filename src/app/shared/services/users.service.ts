@@ -13,7 +13,7 @@ export class UsersService {
     throw new Error('Method not implemented.');
   }
 
-  private url: string = 'https://notes-gestor-sofka.herokuapp.com/';
+  private url: string = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {
 

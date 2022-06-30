@@ -33,7 +33,7 @@ export class AssignScoreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getStudent(`${id}`);
     this.formScore = new FormGroup(
-      {score: new FormControl ('', [Validators.required,  Validators.min(0),  Validators.max(1)])}
+      {score: new FormControl ('', [Validators.required,  Validators.min(0),  Validators.max(100)])}
     )
   }
 
@@ -53,9 +53,15 @@ export class AssignScoreComponent implements OnInit {
       moduleName: programStudent.program.courses[iCourse].modules[iModule].name,
       newScore: this.formScore.value.score
     }
-    this.programService.assignScore(changeScore).subscribe()
-    this.toastr.success('Nota asignada', 'Exitoso')
-   // console.log(changeScore)
+    if(this.formScore.value.score == '' || this.formScore.value.score == null){
+      this.toastr.error('Faltan datos, la nota debe ser de 1 a 100 puntos', 'Error')
+    } if(this.formScore.value.score >=101){
+      this.toastr.error('Faltan datos, la nota debe ser de 1 a 100 puntos', 'Error')
+    }if (this.formScore.value.score >= 1 && this.formScore.value.score <= 100) {
+      this.programService.assignScore(changeScore).subscribe()
+      this.toastr.success('Nota asignada', 'Exitoso')      
+     }
+    console.log(changeScore)
   }
 }
 

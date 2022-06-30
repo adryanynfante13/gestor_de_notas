@@ -25,9 +25,10 @@
           <div *ngFor="let module of course.modules; index as iModule">
             <p><strong>Modulo: </strong> {{module?.name}}</p>
             <p> <strong>Porcentaje: </strong> {{module?.percentage}}%</p>
-            <form [formGroup]="formScore" >
+            <form [formGroup]="formScore"  >
               <label for="score" class="form-label"><strong>Añadir nota: </strong> </label>
-              <input type="number" formControlName="score" min="0" max="5" required >
+              <input type="number" formControlName="score" min="0" max="100" required >
+  
             </form>
             <br>
             <button (click)="assignScore(programStudent!, iCourse, iModule)" >Asignar nota</button>
