@@ -1,6 +1,6 @@
 <div class="container2">
   <h1>Listado de Estudiantes</h1>
-  <div class="mat-elevation-z8" style="border-radius: 20px;">
+  <div class="mat-elevation-z8" style="border-radius: 20px">
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -18,18 +18,26 @@
             {{ studentScore[index2][index3] }}
           </td>
           <td>
-            <a class="pointer" style="color: blueviolet" (click)="mostrarEstudiante(student)" >
-              <mat-icon>visibility</mat-icon>
+            <a
+              class="pointer"
+              style="color: blueviolet"
+              (click)="mostrarEstudiante(student, index2)"
+            >
+              <mat-icon
+                *ngIf="!bottonActive[index2]"
+                style="color: rgb(120, 113, 113)"
+                >visibility</mat-icon
+              >
+              <mat-icon
+                *ngIf="bottonActive[index2]"
+                style="color: rgb(208, 79, 198)"
+                >visibility</mat-icon
+              >
             </a>
           </td>
         </tr>
       </tbody>
     </table>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page of users"
-      style="border-radius: 20px;"
-    ></mat-paginator>
   </div>
 </div>
 
@@ -46,7 +54,7 @@
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
     [timeline]="timeline"
-    [results]="notasConvertida"
+    [results]="notasMostrar"
     [curve]="curve"
     (select)="onSelect($event)"
     (activate)="onActivate($event)"

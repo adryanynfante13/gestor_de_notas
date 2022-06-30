@@ -17,6 +17,7 @@ import * as shape from 'd3-shape';
 })
 export class GraficaDetalleComponent implements OnInit {
   notasConvertida: Array<DataModel> = [];
+  notasMostrar: Array<any> = [];
   studentsName: Array<string> = []
   coursesName: string[] = []
   view: number[] = [1500, 800];
@@ -39,6 +40,7 @@ export class GraficaDetalleComponent implements OnInit {
   curve: any = shape.curveBumpX;
   idprogram: string = "ciclo-col-c2";
   legendTitle: string="";
+  bottonActive: Array<boolean> = []
 
   constructor(private getStudentService: GraficaService) {
     this.actualizarGrafica(this.idprogram);
@@ -97,12 +99,17 @@ export class GraficaDetalleComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  mostrarEstudiante(student: any){
-    console.log(student)
-    this.legendTitle = student;
-    this.onActivate(student);
-    this.onDeactivate(student)
-    this.onSelect(student);
+  mostrarEstudiante(student: any, indice: number){
+    this.bottonActive[indice]=!this.bottonActive[indice];
+    this.notasConvertida = this.notas.map(nota => this.notaToData(nota));
+    if (this.bottonActive[indice] == true) {
+      this.notasConvertida = this.notasConvertida.filter(nota => nota.name == this.studentsName[indice])
+      this.notasMostrar =this.notasMostrar.concat(this.notasConvertida)
+    }else{
+
+      this.notasMostrar =this.notasMostrar.filter(nota => nota.name !== this.studentsName[indice])
+
+    }
   }
 
 }
