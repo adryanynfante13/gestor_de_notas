@@ -1,3 +1,4 @@
+import { ProgramService } from 'src/app/shared/services/program.service';
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../modals/user';
 import * as auth from 'firebase/auth';
@@ -20,7 +21,8 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Firebase auth service
     public router: Router,
     public ngZone: NgZone,
-    private toastr: ToastrService 
+    private toastr: ToastrService,
+    private pService: ProgramService 
   ) {
 
     this.afAuth.authState.subscribe((user) => {
@@ -41,8 +43,26 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-          this.toastr.info('Bienvenido al Sistema')
+          //Se optiene cual es el usuario que esta actualmente logueado
+          this.afAuth.currentUser.then(user => {
+            if(user !== null){
+              const id:string =user.uid;
+              this.pService.getUserRole(id).subscribe(user => {
+                if(user.role == "SuperAdmin"){
+                  this.router.navigate(['dashboard']);
+                  this.toastr.info('Bienvenido al Sistema SuperAdmin')
+                }else if(user.role == "Admin"){
+                  this.router.navigate(['dashboard-admin']);
+                  this.toastr.info('Bienvenido al Sistema administrador')
+                }else{
+                  this.router.navigate(['dashboard-student']);
+                  this.toastr.info('Bienvenido al Sistema estudiante')
+                }
+              })
+            }
+
+          });
+          
         });
         this.SetUserData(result.user);
       })

@@ -1,3 +1,4 @@
+import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -16,12 +17,15 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { ProgramComponent } from './components/program/program.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'dashboard-student', component: DashboardStudentComponent},
+  { path: 'dashboard-admin', component: DashboardAdminComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'programs', component: ProgramsComponent },
