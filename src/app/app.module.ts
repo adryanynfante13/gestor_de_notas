@@ -46,6 +46,8 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
 import { GraficaDetalleComponent } from './components/grafica-detalle/grafica-detalle.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from 'angular-datatables';
+import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 
 
 @NgModule({
@@ -67,6 +69,8 @@ import { DataTablesModule } from 'angular-datatables';
     AssignScoreComponent,
     GraficaDetalleComponent,
 
+    DashboardStudentComponent,
+    DashboardAdminComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

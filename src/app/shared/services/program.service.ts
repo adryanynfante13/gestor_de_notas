@@ -43,9 +43,16 @@ export class ProgramService {
     return this.http.get<StudentI[]>(direction);
   }
 
+  
+
   getStudent(id : string):Observable<StudentProgramI>{
     let direction = this.url + 'students/' + id;
     return this.http.get<StudentProgramI>(direction);
+  }
+
+  getUserRole(id : string):Observable<UserI>{
+    let direction = this.url + 'user/' + id;
+    return this.http.get<UserI>(direction);
   }
 
   saveModules(module: ModuleI): Observable<any> {
