@@ -9,8 +9,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { DataTablesModule } from "angular-datatables";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 // components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -65,7 +65,9 @@ import { AssignScoreComponent } from './components/assign-score/assign-score.com
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DataTablesModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
 
   ],
   providers: [AuthService, HttpClientModule],

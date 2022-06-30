@@ -6,6 +6,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
 import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 import { ModuleI } from 'src/app/shared/modals/module-i';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class CoursesComponent implements OnInit {
     private programService: ProgramService,  
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private toastr: ToastrService) { }
     
 
     id: string | undefined
@@ -63,6 +65,7 @@ export class CoursesComponent implements OnInit {
       score: 0
     }
     this.moduleList.push(module);
+    this.toastr.success('Modulo Guardado', 'Exitoso')
     return module
   }
 
@@ -73,6 +76,7 @@ export class CoursesComponent implements OnInit {
       modules: this.moduleList
       }
       this.programService.saveCourse(course, this.fullProgram.program.id as string).subscribe();
+      this.toastr.success('Curso Guardado', 'Exitoso')
       setTimeout(() => {
         window.location.reload();
       }, 1000);

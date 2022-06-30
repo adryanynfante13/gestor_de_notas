@@ -6,6 +6,7 @@ import { ProgramService } from 'src/app/shared/services/program.service';
 import { ProgramI } from 'src/app/shared/modals/program-i';
 import { FullProgramI } from '../../shared/modals/fullProgram-i';
 import * as uuid from "uuid";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ProgramComponent implements OnInit {
   @Input() item: any;
   constructor(authService: AuthService, 
     private programService: ProgramService,  
-    private route: Router) { }
+    private route: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {this.formProgram = new FormGroup(
     {
@@ -49,7 +51,8 @@ saveFullProgram() {
     students: []
   }
   this.programService.saveProgram(fullProgram).subscribe();
-  console.log(fullProgram)
+  this.toastr.success('Programa Guardado', 'Exitoso')
+  //console.log(fullProgram)
   setTimeout(() => {
     window.location.reload();
   }, 1000);

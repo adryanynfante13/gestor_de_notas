@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserI } from 'src/app/shared/modals/user-i';
 import { UserFirebase } from 'src/app/shared/services/userFirebase';
 import { UsersService } from 'src/app/shared/services/users.service';
@@ -19,7 +20,9 @@ export class CreateUserComponent implements OnInit {
 
   constructor(public authService: AuthService, 
     private userService: UsersService, 
-    private route: Router) { }
+    private route: Router,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.formCreate = new FormGroup(
@@ -49,5 +52,6 @@ export class CreateUserComponent implements OnInit {
         role : this.formCreate.value.role,
       }
       this.userService.saveUser(user).subscribe();
+      this.toastr.success('Usuario Guardado', 'Exitoso')
   }
 }

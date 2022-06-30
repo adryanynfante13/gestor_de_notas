@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CourseI } from 'src/app/shared/modals/course-i';
 import { ModuleI } from 'src/app/shared/modals/module-i';
 import { ChangeScoreI } from 'src/app/shared/modals/score-i';
@@ -25,7 +26,8 @@ export class AssignScoreComponent implements OnInit {
   students: UserI | undefined 
   
   constructor(private route: ActivatedRoute,
-    private programService: ProgramService) { }
+    private programService: ProgramService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -52,6 +54,7 @@ export class AssignScoreComponent implements OnInit {
       newScore: this.formScore.value.score
     }
     this.programService.assignScore(changeScore).subscribe()
+    this.toastr.success('Nota asignada', 'Exitoso')
    // console.log(changeScore)
   }
 }

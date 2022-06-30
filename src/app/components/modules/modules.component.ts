@@ -35,6 +35,6 @@ export class ModulesComponent implements OnInit {
       }
       this.programService.saveModules(module).subscribe();
      
-      console.log(module);
+     // console.log(module);
   }
 }

@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class AuthService {
     public afs: AngularFirestore, // Firestore service
     public afAuth: AngularFireAuth, // Firebase auth service
     public router: Router,
-    public ngZone: NgZone 
+    public ngZone: NgZone,
+    private toastr: ToastrService 
   ) {
 
     this.afAuth.authState.subscribe((user) => {
@@ -40,11 +42,12 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
+          this.toastr.info('Bienvenido al Sistema')
         });
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert("Usuario o contraseña incorrecta, valida tus datos");
+        this.toastr.error('Usuario o contraseña incorrecta, valida tus datos', 'Error')
       });
   }
 
@@ -54,6 +57,7 @@ export class AuthService {
       return await this.afAuth
         .createUserWithEmailAndPassword(email, password)
         .then( (result) => {
+          this.toastr.success('Usuario Creado', 'Exitoso')
           this.SendVerificationMail();
           this.SetUserData(result.user); 
           return result;
@@ -68,6 +72,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
+        this.toastr.info('Verifica tu correo', 'Exitoso')
         this.router.navigate(['verify-email-address']);
       });
   }
@@ -77,11 +82,11 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Hemos Enviado un correo a tu email para restablecer tu contraseña');
+        this.toastr.info('Hemos Enviado un correo a tu email para restablecer tu contraseña', 'Exitoso')
         this.router.navigate(['sign-in']);
       })
       .catch((error) => {
-        window.alert("Usuario no resgistrado");
+        this.toastr.warning('Usuario no resgistrado', 'Error')
       });
   }
 
@@ -134,6 +139,7 @@ export class AuthService {
   // cerrar sesión
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      this.toastr.info('Vuelve pronto')
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     });

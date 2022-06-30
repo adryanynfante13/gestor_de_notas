@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { FullProgramI } from 'src/app/shared/modals/fullProgram-i'
 import { StudentI } from 'src/app/shared/modals/student-i';
@@ -27,7 +28,8 @@ export class AssignStudentComponent implements OnInit {
   constructor(   
     private studentService: UsersService,
     private route: ActivatedRoute,
-    private programService: ProgramService ) {}
+    private programService: ProgramService,
+    private toastr: ToastrService ) {}
 
 
   ngOnInit(): void {
@@ -69,7 +71,8 @@ export class AssignStudentComponent implements OnInit {
       average: 0
     }
     this.programService.addStudent(assingStudent, this.fullProgram.program.id as string).subscribe()
-    console.log(assingStudent)
+    this.toastr.success('Estudiante asignado', 'Exitoso')
+    //console.log(assingStudent)
   }
 
 
