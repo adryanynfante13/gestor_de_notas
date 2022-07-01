@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CourseI } from 'src/app/shared/modals/course-i';
+import { FullProgramI } from 'src/app/shared/modals/fullProgram-i';
 import { ModuleI } from 'src/app/shared/modals/module-i';
 import { ChangeScoreI } from 'src/app/shared/modals/score-i';
 import { StudentI } from 'src/app/shared/modals/student-i';
@@ -24,6 +25,7 @@ export class AssignScoreComponent implements OnInit {
   courses: CourseI[] | undefined
   modules: ModuleI[] | undefined
   students: UserI | undefined 
+  fullProgram!: FullProgramI;
   
   constructor(private route: ActivatedRoute,
     private programService: ProgramService,

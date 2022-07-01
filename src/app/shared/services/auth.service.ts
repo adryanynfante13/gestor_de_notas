@@ -39,7 +39,7 @@ export class AuthService {
     });
   }
 
-  // inicio de sesipon con usuario y contraseña
+  // inicio de sesion con usuario y contraseña
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)

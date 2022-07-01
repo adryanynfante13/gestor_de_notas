@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'program/:id', component: DetailProgramComponent },
   {path:'assign-student/:id', component: AssignStudentComponent},
   {path:'assign-score/:id', component: AssignScoreComponent},
-  {path:'graph-program/id', component: GraficaDetalleComponent}
+  {path:'graph-program/id', component: GraficaDetalleComponent},
 ];
 
 @NgModule({

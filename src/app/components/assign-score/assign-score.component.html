@@ -1,6 +1,9 @@
 <app-header></app-header>
 <div class="container">
   <div class="row">
+    <div class="text-start">
+      <button [routerLink]="['/program', fullProgram?.program?.id]">Volver a programa</button>
+    </div>
     <div class="card text-center rounded" >
       <div class="card-header fs-4 font1">
         <h2><strong>Datos del Estudiante</strong> </h2>

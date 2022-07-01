@@ -8,6 +8,7 @@ import { SerieModel } from 'src/app/shared/modals/grafica/serie.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { GraficaService } from 'src/app/shared/services/grafica/grafica.service';
 import { ProgramService } from 'src/app/shared/services/program.service';
+import { ActivatedRoute } from '@angular/router'
 import * as shape from 'd3-shape';
 
 @Component({
@@ -40,7 +41,8 @@ export class DashboardStudentComponent implements OnInit {
 
   constructor(private authService:AuthService,
     private programService:ProgramService,
-    private getStudentService: GraficaService) {
+    private getStudentService: GraficaService,
+    private route: ActivatedRoute) {
     
     }
 
@@ -50,8 +52,11 @@ export class DashboardStudentComponent implements OnInit {
       console.log(this.studentData)
       console.log(this.studentData.program.id)
       this.actualizarGrafica(this.studentData.program.id, this.studentData.user.fullName)
-    }, 2000);
+    }, 1000);
+
   }
+
+
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
