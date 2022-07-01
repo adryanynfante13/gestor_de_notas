@@ -20,15 +20,11 @@ import { StudentProgramI } from 'src/app/shared/modals/studentProgram-i';
 })
 export class DetailProgramComponent implements OnInit {
   fullProgram: FullProgramI | undefined
-  fullProgramsss: FullProgramI[] | undefined
   fullPrograms: StudentProgramI[] | undefined
   courses: CourseI[] | undefined
   students: UserI | undefined 
   programStudents: StudentI[] | undefined 
   programStudent: StudentI | undefined 
-
-
- 
 
 
   constructor(
