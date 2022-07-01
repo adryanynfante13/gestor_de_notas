@@ -9,6 +9,7 @@ import { NotaModel } from 'src/app/shared/modals/grafica/nota.model';
 import { SerieModel } from 'src/app/shared/modals/grafica/serie.model';
 import { GraficaService } from 'src/app/shared/services/grafica/grafica.service';
 import * as shape from 'd3-shape';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-grafica-detalle',
@@ -38,12 +39,13 @@ export class GraficaDetalleComponent implements OnInit {
   timeline: boolean = true;
   roundDomains: boolean = true;
   curve: any = shape.curveBumpX;
-  idprogram: string = "ciclo-col-c2";
+  idprogram: string | undefined;
   legendTitle: string="";
   bottonActive: Array<boolean> = []
 
-  constructor(private getStudentService: GraficaService) {
-    this.actualizarGrafica(this.idprogram);
+  constructor(private getStudentService: GraficaService, private route: ActivatedRoute) {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.actualizarGrafica(`${id}`)
   }
 
   ngOnInit(): void { }
