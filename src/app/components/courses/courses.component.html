@@ -52,8 +52,14 @@
         </section>
         <div class="text-end">
           <br>
-          <button (click)="saveCourse()" [routerLink]="['/program', fullProgram?.program?.id]" [disabled]="f.invalid" class="boton">Guardar
-            Curso</button>
+          <div *ngIf="isSuccess; else isError">
+            <button (click)="saveCourse()" [routerLink]="['/program', fullProgram?.program?.id]" [disabled]="f.invalid" class="boton">Guardar
+              Curso</button>
+          </div>
+          <ng-template #isError>
+            <button (click)="showError()" class="boton">Guardar
+              Curso</button>
+          </ng-template>
         </div>
         <br>
       </form>
