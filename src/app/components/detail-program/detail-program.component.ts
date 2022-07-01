@@ -8,6 +8,7 @@ import { UserI } from 'src/app/shared/modals/user-i';
 import { UsersService } from '../../shared/services/users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { StudentI } from '../../shared/modals/student-i';
+import { StudentProgramI } from 'src/app/shared/modals/studentProgram-i';
 
 
 
@@ -19,10 +20,14 @@ import { StudentI } from '../../shared/modals/student-i';
 })
 export class DetailProgramComponent implements OnInit {
   fullProgram: FullProgramI | undefined
+  fullProgramsss: FullProgramI[] | undefined
+  fullPrograms: StudentProgramI[] | undefined
   courses: CourseI[] | undefined
   students: UserI | undefined 
   programStudents: StudentI[] | undefined 
   programStudent: StudentI | undefined 
+
+
  
 
 

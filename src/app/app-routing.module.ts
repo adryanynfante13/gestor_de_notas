@@ -21,7 +21,7 @@ import { ProgramComponent } from './components/program/program.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'dashboard', component: DashboardComponent},

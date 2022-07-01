@@ -35,7 +35,7 @@ export class AssignScoreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getStudent(`${id}`);
     this.formScore = new FormGroup(
-      {score: new FormControl ('', [Validators.required,  Validators.min(0),  Validators.max(100)])}
+      {score: new FormControl ('', [Validators.required,  Validators.min(1),  Validators.max(100)])}
     )
   }
 
