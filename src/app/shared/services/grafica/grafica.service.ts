@@ -16,4 +16,11 @@ export class GraficaService {
     header.set('Type-Content','aplication/json')
     return this.http.get(`${this._url}/${idProgram}`, {headers:header});
   }
+
+  getStudentGrades(idProgram:string, idStudent:string){
+    let header =new HttpHeaders;
+    header.set('Type-Content','aplication/json')
+    return this.http.get(`${this._url}/${idProgram}/${idStudent}`, {headers:header});
+  }
+
 }

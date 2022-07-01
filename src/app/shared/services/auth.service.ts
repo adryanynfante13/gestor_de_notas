@@ -9,12 +9,14 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any; 
+  userData: any;
+  student:any;
 
   constructor(
     public afs: AngularFirestore, // Firestore service
@@ -22,7 +24,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
     private toastr: ToastrService,
-    private pService: ProgramService 
+    private pService: ProgramService
   ) {
 
     this.afAuth.authState.subscribe((user) => {
@@ -47,6 +49,7 @@ export class AuthService {
           this.afAuth.currentUser.then(user => {
             if(user !== null){
               const id:string =user.uid;
+              
               this.pService.getUserRole(id).subscribe(user => {
                 if(user.role == "SuperAdmin"){
                   this.router.navigate(['dashboard']);
@@ -58,11 +61,12 @@ export class AuthService {
                   this.router.navigate(['dashboard-student']);
                   this.toastr.info('Bienvenido al Sistema estudiante')
                 }
+                this.pService.getStudent(id).subscribe(s =>{
+                  this.student = s;
+                })
               })
             }
-
           });
-          
         });
         this.SetUserData(result.user);
       })
@@ -79,7 +83,7 @@ export class AuthService {
         .then( (result) => {
           this.toastr.success('Usuario Creado', 'Exitoso')
           this.SendVerificationMail();
-          this.SetUserData(result.user); 
+          this.SetUserData(result.user);
           return result;
         })
     } catch (error) {

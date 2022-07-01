@@ -26,7 +26,7 @@ export class GraficaDetalleComponent implements OnInit {
   studentScore: any
   coursesValues: Array<Array<any>> = []
   //options
-  public legend: boolean = true;
+  legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
