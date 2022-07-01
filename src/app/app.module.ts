@@ -10,14 +10,12 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 // components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { StudentComponent } from './components/student/student.component';
-import { DetailProgramComponent } from './components/detail-program/detail-program.component';
-import { HeaderComponent } from './components/header/header.component';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ModulesComponent } from './components/modules/modules.component';
@@ -43,12 +41,14 @@ import { AuthService } from './shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssignStudentComponent } from './components/assign-student/assign-student.component';
 import { AssignScoreComponent } from './components/assign-score/assign-score.component';
-import { GraficaDetalleComponent } from './components/grafica-detalle/grafica-detalle.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from 'angular-datatables';
+import { GraficaDetalleComponent } from './components/grafica-detalle/grafica-detalle.component';
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-student.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-
+import { DetailProgramComponent } from './components/detail-program/detail-program.component';
+import { HeaderComponent } from './components/header/header.component';
+import { StudentComponent } from './components/student/student.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,6 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
     AssignStudentComponent,
     AssignScoreComponent,
     GraficaDetalleComponent,
-
     DashboardStudentComponent,
     DashboardAdminComponent,
   ],

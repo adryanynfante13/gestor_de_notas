@@ -1,22 +1,22 @@
-import { ProgramService } from 'src/app/shared/services/program.service';
-import { Injectable, NgZone } from '@angular/core';
-import { User } from '../modals/user';
-import * as auth from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ProgramService } from 'src/app/shared/services/program.service'
+import { Injectable, NgZone } from '@angular/core'
+import { User } from '../modals/user'
+import * as auth from 'firebase/auth'
+import { AngularFireAuth } from '@angular/fire/compat/auth'
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { stringify } from 'querystring';
+} from '@angular/fire/compat/firestore'
+import { Router } from '@angular/router'
+import { ToastrService } from 'ngx-toastr'
+import { stringify } from 'querystring'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any;
-  student:any;
+  userData: any
+  student: any
 
   constructor(
     public afs: AngularFirestore, // Firestore service
@@ -24,19 +24,18 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
     private toastr: ToastrService,
-    private pService: ProgramService
+    private pService: ProgramService,
   ) {
-
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
+        this.userData = user
+        localStorage.setItem('user', JSON.stringify(this.userData))
+        JSON.parse(localStorage.getItem('user')!)
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        localStorage.setItem('user', 'null')
+        JSON.parse(localStorage.getItem('user')!)
       }
-    });
+    })
   }
 
   // inicio de sesion con usuario y contraseña
@@ -46,33 +45,36 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           //Se optiene cual es el usuario que esta actualmente logueado
-          this.afAuth.currentUser.then(user => {
-            if(user !== null){
-              const id:string =user.uid;
-              
-              this.pService.getUserRole(id).subscribe(user => {
-                if(user.role == "SuperAdmin"){
-                  this.router.navigate(['dashboard']);
+          this.afAuth.currentUser.then((user) => {
+            if (user !== null) {
+              const id: string = user.uid
+
+              this.pService.getUserRole(id).subscribe((user) => {
+                if (user.role == 'SuperAdmin') {
+                  this.router.navigate(['dashboard'])
                   this.toastr.info('Bienvenido al Sistema SuperAdmin')
-                }else if(user.role == "Admin"){
-                  this.router.navigate(['dashboard-admin']);
+                } else if (user.role == 'Admin') {
+                  this.router.navigate(['dashboard-admin'])
                   this.toastr.info('Bienvenido al Sistema administrador')
-                }else{
-                  this.router.navigate(['dashboard-student']);
+                } else {
+                  this.router.navigate(['dashboard-student'])
                   this.toastr.info('Bienvenido al Sistema estudiante')
                 }
-                this.pService.getStudent(id).subscribe(s =>{
-                  this.student = s;
+                this.pService.getStudent(id).subscribe((s) => {
+                  this.student = s
                 })
               })
             }
-          });
-        });
-        this.SetUserData(result.user);
+          })
+        })
+        this.SetUserData(result.user)
       })
       .catch((error) => {
-        this.toastr.error('Usuario o contraseña incorrecta, valida tus datos', 'Error')
-      });
+        this.toastr.error(
+          'Usuario o contraseña incorrecta, valida tus datos',
+          'Error',
+        )
+      })
   }
 
   // creación de usuarios
@@ -80,15 +82,15 @@ export class AuthService {
     try {
       return await this.afAuth
         .createUserWithEmailAndPassword(email, password)
-        .then( (result) => {
+        .then((result) => {
           this.toastr.success('Usuario Creado', 'Exitoso')
-          this.SendVerificationMail();
-          this.SetUserData(result.user);
-          return result;
+          this.SendVerificationMail()
+          this.SetUserData(result.user)
+          return result
         })
     } catch (error) {
-        return error;
-      };
+      return error
+    }
   }
 
   // envio de email de verificación
@@ -97,8 +99,8 @@ export class AuthService {
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
         this.toastr.info('Verifica tu correo', 'Exitoso')
-        this.router.navigate(['verify-email-address']);
-      });
+        this.router.navigate(['verify-email-address'])
+      })
   }
 
   // recuperar contraseña
@@ -106,20 +108,21 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        this.toastr.info('Hemos Enviado un correo a tu email para restablecer tu contraseña', 'Exitoso')
-        this.router.navigate(['sign-in']);
+        this.toastr.info(
+          'Hemos Enviado un correo a tu email para restablecer tu contraseña',
+          'Exitoso',
+        )
+        this.router.navigate(['sign-in'])
       })
       .catch((error) => {
         this.toastr.warning('Usuario no resgistrado', 'Error')
-      });
+      })
   }
-
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    const user = JSON.parse(localStorage.getItem('user')!)
+    return user !== null && user.emailVerified !== false ? true : false
   }
-
 
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
@@ -127,46 +130,44 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
+          this.router.navigate(['dashboard'])
+        })
+        this.SetUserData(result.user)
       })
       .catch((error) => {
-        window.alert(error);
-      });
+        window.alert(error)
+      })
   }
-
 
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-  const userData: User = {
+      `users/${user.uid}`,
+    )
+    const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       emailVerified: user.emailVerified,
-    };
+    }
     return userRef.set(userData, {
       merge: true,
-    });
+    })
   }
   // sesión con gogole
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard'])
       }
-    });
+    })
   }
 
   // cerrar sesión
   SignOut() {
     return this.afAuth.signOut().then(() => {
       this.toastr.info('Vuelve pronto')
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
-    });
+      localStorage.removeItem('user')
+      this.router.navigate(['sign-in'])
+    })
   }
-
 }

@@ -10,6 +10,9 @@ import { SerieModel } from 'src/app/shared/modals/grafica/serie.model';
 import { GraficaService } from 'src/app/shared/services/grafica/grafica.service';
 import * as shape from 'd3-shape';
 import { ActivatedRoute } from '@angular/router';
+import { ProgramService } from 'src/app/shared/services/program.service';
+import { StudentI } from 'src/app/shared/modals/student-i';
+import { UserI } from 'src/app/shared/modals/user-i';
 
 @Component({
   selector: 'app-grafica-detalle',
@@ -42,13 +45,19 @@ export class GraficaDetalleComponent implements OnInit {
   idprogram: string | undefined;
   legendTitle: string="";
   bottonActive: Array<boolean> = []
+  programStudent: StudentI | undefined 
+  students: UserI | undefined 
 
-  constructor(private getStudentService: GraficaService, private route: ActivatedRoute) {
+  constructor(private getStudentService: GraficaService, private route: ActivatedRoute,   private programService: ProgramService) {
     const id = this.route.snapshot.paramMap.get('id');
     this.actualizarGrafica(`${id}`)
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getStudentsAll();
+    this.getStudent(`${id}`);
+   }
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -113,5 +122,15 @@ export class GraficaDetalleComponent implements OnInit {
 
     }
   }
+
+  getStudent(id: string): void {
+    this.programService.getStudent(id).subscribe((data) => {
+      this.programStudent= data;    
+      console.log(data)
+    })
+  }
+
+  getStudentsAll(): void {(this.getStudentsAll)};
+
 
 }

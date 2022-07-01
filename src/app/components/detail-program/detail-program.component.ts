@@ -25,6 +25,7 @@ export class DetailProgramComponent implements OnInit {
   students: UserI | undefined 
   programStudents: StudentI[] | undefined 
   programStudent: StudentI | undefined 
+  studentsP: StudentProgramI[] | undefined
 
 
   constructor(
@@ -34,14 +35,15 @@ export class DetailProgramComponent implements OnInit {
   ) {}
 
   id: string | undefined;
-
+  idStudentCal:string = '';
+  
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.getProgram(`${id}`);
     this.getStudentsAll();
     this.programService.getStudentsAll().subscribe((data) => {
       this.programStudents = data})
-    this.getStudent(`${id}`);
+    this.getStudent(this.idStudentCal);
   }
 
 
@@ -51,6 +53,8 @@ export class DetailProgramComponent implements OnInit {
     this.programService.getProgram(id).subscribe((data) => {
       this.fullProgram = data;
       this.courses = data.program.courses;
+      this.studentsP = data.students;
+      console.log(this.students)
     })
   }
 
