@@ -31,8 +31,8 @@ export class DashboardStudentComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Modulos';
-  yAxisLabel: string = 'Calificacion';
+  xAxisLabel: string = 'Módulos';
+  yAxisLabel: string = 'Calificación';
   timeline: boolean = true;
   roundDomains: boolean = true;
   curve: any = shape.curveBumpX;
